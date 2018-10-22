@@ -5,6 +5,8 @@
 	include "config.php";
 	//load file model
 	include "model/model.php";
+	//load file common
+	//include('public/backend/Classes/Common.php');
 	//lay bien controller truyen tu url
 	$controller = isset($_GET["controller"]) ? $_GET["controller"] : "home";
 	//noi cac thanh phan de ra duong dan vat ly
