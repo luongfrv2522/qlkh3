@@ -39,34 +39,36 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         	<select name="fk_category_news_id">
-								<?php 
-									$category = $this->model->get_all("select * from tbl_category_news order by pk_category_news_id desc");
-									foreach($category as $rows):
-								 ?>
-								<option <?php if(isset($record->fk_category_news_id)&&$record->fk_category_news_id==$rows->pk_category_news_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_category_news_id; ?>"><?php echo $rows->c_name; ?></option>
-								<?php endforeach; ?>
-							</select>
+            								<?php 
+            									$category = $this->model->get_all("select * from tbl_category_news order by pk_category_news_id desc");
+            									foreach($category as $rows):
+            								 ?>
+            								<option <?php if(isset($record->fk_category_news_id)&&$record->fk_category_news_id==$rows->pk_category_news_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_category_news_id; ?>"><?php echo $rows->c_name; ?></option>
+            								<?php endforeach; ?>
+            							</select>
                         </div>
                       </div>
+
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Giới thiệu <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                         	<textarea name="c_description" id="c_description">
-								<?php echo isset($record->c_description)?$record->c_description:''; ?>
-							</textarea>
-							<script type="text/javascript">
-								ClassicEditor
-	                			.create(document.querySelector( '#c_description' ));
-							</script>
+            								<?php echo isset($record->c_description)?$record->c_description:''; ?>
+            							</textarea>
+            							<script type="text/javascript">
+            								ClassicEditor
+            	                			.create(document.querySelector( '#c_description' ));
+            							</script>
                         </div>
                       </div>
+
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Chi tiết <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                         	<textarea name="c_content" id="c_content">
 									<?php echo isset($record->c_content)?$record->c_content:''; ?>
 								</textarea>
@@ -97,7 +99,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-primary" type="button">Cancel</button>
+                          <button class="btn btn-primary" type="button"><a href="admin.php?controller=news" style="color: white;">Cancel</a></button>
 						              <button class="btn btn-primary" type="reset" value="Reset">Reset</button>
                           <button type="submit" value="Process" class="btn btn-success">Submit</button>
                         </div>
