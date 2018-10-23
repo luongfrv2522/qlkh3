@@ -24,7 +24,7 @@
 			}
 			//---
 			//load file view
-			include "view/backend/w_giaovien/view_login.php";
+			include "view/backend/view_login.php";
 			//---
 		}
 	}

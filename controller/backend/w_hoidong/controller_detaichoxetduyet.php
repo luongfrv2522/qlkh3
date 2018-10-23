@@ -26,7 +26,7 @@
 					//quy dinh so ban ghi hien thi tren mot trang
 					$record_per_page = 5;
 					//tinh tong so ban ghi
-					$total = $this->model->num_rows("select pk_madetai_id from tbl_detai where c_trangthai in (0,1) ");
+					$total = $this->model->num_rows("select pk_madetai_id from tbl_detai where c_trangthai in (1) ");
 					//tinh so trang
 					$num_page = ceil($total/$record_per_page);
 					//lay bien p truyen tu url, bien nay se chi trang hien tai
@@ -35,7 +35,7 @@
 					$from = $p * $record_per_page;			
 					//---------
 					//lay toan bo ban ghi co phan trang
-					$arr = $this->model->get_all("select * from tbl_detai where c_trangthai in (0,1) order by pk_madetai_id desc limit $from,$record_per_page");
+					$arr = $this->model->get_all("select * from tbl_detai where c_trangthai in (1) order by pk_madetai_id desc limit $from,$record_per_page");
 					//load view
 					include "view/backend/w_hoidong/view_detaichoxetduyet.php";
 				break;

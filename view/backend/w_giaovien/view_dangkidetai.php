@@ -67,6 +67,12 @@
                           echo "Chờ phê duyệt";
                         else if($rows->c_trangthai == 1)
                           echo "Chờ hội đồng duyệt";
+                         else if($rows->c_trangthai == 2)
+                          echo "Đang thực hiện";
+                         else if($rows->c_trangthai == 3)
+                          echo "Hoàn thành";
+                        else if($rows->c_trangthai == 4)
+                          echo "Đã hủy";
                       ?>  
                     </td>
 

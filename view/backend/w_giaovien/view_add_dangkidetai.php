@@ -1,3 +1,4 @@
+
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -42,7 +43,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Từ ngày 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="c_tungay" value="<?php echo isset($record->c_tungay)?$record->c_tungay:""; ?>" required class="form-control col-md-7 col-xs-12">
+                          <input type="date" name="c_tungay" value="<?php echo isset($record->c_tungay)?$record->c_tungay:""; ?>" required class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
@@ -50,7 +51,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Đến ngày 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="c_denngay" value="<?php echo isset($record->c_denngay)?$record->c_denngay:""; ?>" required class="form-control col-md-7 col-xs-12">
+                          <input type="date" name="c_denngay" value="<?php echo isset($record->c_denngay)?$record->c_denngay:""; ?>" required class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
@@ -62,15 +63,7 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Trạng thái 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <td class=" last">
-                           <button type="button" value="<?php echo isset($record->c_trangthai)?$record->c_trangthai==0:""; ?>" class="btn btn-default btn-xs">Chờ phê duyệt</button>
-                          </td>
-                        </div>
-                      </div>
+                      
 
 
                       <div class="ln_solid"></div>

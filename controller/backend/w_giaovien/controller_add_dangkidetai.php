@@ -21,9 +21,10 @@
 					$c_tungay = $_POST["c_tungay"];
 					$c_denngay = $_POST["c_denngay"];
 					
+					$pk_user_id = $_SESSION["SS_USER"]->pk_user_id;
+					
 					$file_mo_ta = $_POST["file_mo_ta"];
-					$c_trangthai = $_POST["c_trangthai"];
-					$this->model->execute("insert into tbl_detai set c_tendetai='$c_tendetai', c_noidungnghiencuu='$c_noidungnghiencuu', c_kinhphi=$c_kinhphi, c_tungay='$c_tungay', c_denngay='$c_denngay',  file_mo_ta='$file_mo_ta', c_trangthai=$c_trangthai");
+					$this->model->execute("insert into tbl_detai set fk_user_id='$pk_user_id', c_tendetai='$c_tendetai', c_noidungnghiencuu='$c_noidungnghiencuu', c_kinhphi=$c_kinhphi, c_tungay='$c_tungay', c_denngay='$c_denngay',  file_mo_ta='$file_mo_ta', c_trangthai=0");
 					//di chuyen den trang 
 					header("location:giaovien.php?controller=dangkidetai");
 				break;

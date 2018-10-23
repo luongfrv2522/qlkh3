@@ -11,19 +11,34 @@
 				//ham md5 se hash chuoi ky tu ra 128bit
 				$c_password = md5($c_password);
 				//lay mot ban ghi tuong ung voi email va password truyen vao
-				$record = $this->model->get_a_record("select c_email,c_password from tbl_user where c_email='$c_email'");
+				$record = $this->model->get_a_record("select * from tbl_user where c_email='$c_email'");
 				if(isset($record->c_email)){
 					//so khop password
 					if($c_password == $record->c_password){
 						//so khop duoc ca email va password, co nghia la dang nhap thanh cong
-						$_SESSION["c_email"] = $c_email;						
+						$_SESSION["SS_USER"] = $record;						
 					}
 				}
+				//load file view
+				switch ($record->UserType) {
+					case USER_TYPE::GIAO_VIEN:
+						header("location:giaovien.php");
+						break;
+					case USER_TYPE::TRUONG_BO_MON:
+						header("location:truongbomon.php");
+						break;
+					case USER_TYPE::HOI_DONG:
+						header("location:hoidong.php");
+						break;
+					case USER_TYPE::ADMIN:
+						header("location:hoidong.php");
+						break;
+				}
 				//di chuyen den trang admin.php
-				header("location:admin.php");
+				
 			}
 			//---
-			//load file view
+
 			include "view/backend/view_login.php";
 			//---
 		}

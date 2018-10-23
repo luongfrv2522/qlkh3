@@ -79,7 +79,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="truongbomon.php?controller=logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="admin.php?controller=logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -98,12 +98,12 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="view/backend/images/img.jpg" alt="">Bộ môn
+                    <img src="view/backend/images/img.jpg" alt=""><?=$_SESSION["SS_USER"]->c_email ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;"> Profile</a></li>
-                    <li><a href="truongbomon.php?controller=logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="admin.php?controller=logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
               </ul>
