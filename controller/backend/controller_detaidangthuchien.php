@@ -3,12 +3,30 @@
 		public $model;
 		public function __construct(){
 			$this->model = new model();
+			$act = isset($_GET["act"]) ? $_GET["act"] : "";
+			$id = isset($_GET["id"])&&is_numeric($_GET["id"]) ? $_GET["id"] : 0;
+			switch($act){
+				case "hoanthanh":
+					//lay 1 ban ghi truong ung voi id truyen vao
+					$rs = $this->model->execute("UPDATE `tbl_detai` SET c_trangthai = 3 WHERE pk_madetai_id = ".$_GET["id"]);
+					//load view
+					include "view/backend/view_detaidangthuchien.php";
+					header("location:admin.php?controller=detaidangthuchien");
+				break;
+				case "huy":
+					//lay 1 ban ghi truong ung voi id truyen vao
+					$rs = $this->model->execute("UPDATE `tbl_detai` SET c_trangthai = 4 WHERE pk_madetai_id = ".$_GET["id"]);
+					//load view
+					include "view/backend/view_detaidangthuchien.php";
+					header("location:admin.php?controller=detaidangthuchien");
+				break;
+				default:
 			//---------
 			//phan trang
 			//quy dinh so ban ghi hien thi tren mot trang
 			$record_per_page = 5;
 			//tinh tong so ban ghi
-			$total = $this->model->num_rows("select pk_madetai_id from tbl_detai");
+			$total = $this->model->num_rows("select pk_madetai_id from tbl_detai where c_trangthai in (2)");
 			//tinh so trang
 			$num_page = ceil($total/$record_per_page);
 			//lay bien p truyen tu url, bien nay se chi trang hien tai
@@ -17,10 +35,12 @@
 			$from = $p * $record_per_page;			
 			//---------
 			//lay toan bo ban ghi co phan trang
-			$arr = $this->model->get_all("select * from tbl_detai order by pk_madetai_id desc limit $from,$record_per_page");
+			$arr = $this->model->get_all("select * from tbl_detai where c_trangthai in (2) order by pk_madetai_id desc limit $from,$record_per_page");
 			//load view
 			include "view/backend/view_detaidangthuchien.php";
+			break;
 		}
+	}
 	}
 	new controller_detaidangthuchien();
  ?>

@@ -36,6 +36,7 @@
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
+                    <th class="column-title">Trạng thái </th>
                     <th class="column-title">Action </th>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -65,8 +66,20 @@
                       ?>  
                     </td>
 
+                    <td class=" ">
+                      <?php 
+                        if($rows->c_trangthai == 2)
+                          echo "Đề tài đang thực hiện";
+                        else if($rows->c_trangthai == 3)
+                          echo "Đề tài hoàn thành";
+                        else if($rows->c_trangthai == 4)
+                          echo "Đề tài bị hủy";
+                      ?>  
+                    </td>
+
                     <td class=" last">
-                      <button type="button" class="btn btn-default btn-xs">Xem chi tiết</button>
+                     
+                      <button type="button" class="btn btn-default btn-xs"><a href="admin.php?controller=chitiet_detaidangthuchien&act=xem&id=<?php echo $rows->pk_madetai_id; ?>">Xem chi tiết</a></button>
                     </td>
                     
                   
@@ -74,10 +87,7 @@
                 <?php endforeach; ?>
                 </tbody>
               </table>
-            
-            <div>
-				<a href="#" class="btn btn-primary">Delete</a>
-			</div>
+
               <!-- phân trang -->
 	          	<div class="card-footer" style="padding:5px !important">
 					<ul class="pagination">

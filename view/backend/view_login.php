@@ -1,53 +1,53 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="public/backend/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-	<div class="row justify-content-center" style="margin-top: 15px;">
-		<div class="col-md-6">
-			<!-- card primary -->
-			<div class="card border-primary">
-				<div class="card card-header bg-primary text-white" style="padding:7px !important;">Login</div>
-				<div class="card-body">
-					<!-- form -->
-					<form method="post" action="">
-						<!-- form group -->
-						<div class="form-group">
-							<div class="row">
-								<div class="col-md-3">Email</div>
-								<div class="col-md-9"><input type="email" name="c_email" required class="form-control"></div>
-							</div>
-						</div>
-						<!-- end form group -->
-						<!-- form group -->
-						<div class="form-group">
-							<div class="row">
-								<div class="col-md-3">Password</div>
-								<div class="col-md-9"><input type="password" name="c_password" required class="form-control"></div>
-							</div>
-						</div>
-						<!-- end form group -->
-						<!-- form group -->
-						<div class="form-group">
-							<div class="row">
-								<div class="col-md-3"></div>
-								<div class="col-md-9">
-									<input type="submit" value="Login" class="btn btn-primary"> <input type="Reset" value="Reset" class="btn btn-danger">
-								</div>
-							</div>
-						</div>
-						<!-- end form group -->
-					</form>
-					<!-- end form -->
-				</div>
-			</div>
-			<!-- end card primary -->
-		</div>
-	</div>
-</div>
-</body>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Login</title>
+
+    <!-- Bootstrap -->
+    <link href="public/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="public/backend/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="public/backend/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="public/backend/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="public/backend/build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="login" >
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form method="post" action="">
+              <h1>Login Form</h1>
+              <div>
+                <input type="email" name="c_email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" name="c_password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <input type="submit" value="Login" class="btn btn-default submit" style="margin-left: 70px;">
+                <input type="Reset" value="Reset" class="btn btn-default Reset">  
+              </div>
+
+              <div class="clearfix"></div>
+            </form>
+          </section>
+        </div>
+    </div>
+  </body>
 </html>

@@ -8,8 +8,8 @@
 	}
 	abstract class STATUS
 	{
-	    const CHO_DUYET_1 = 0;
-	    const CHO_DUYET_2 = 1;
+	    const CHO_DUYET_1 = 0;//Chờ trưởng bộ phận duyệt
+	    const CHO_DUYET_2 = 1;//Chờ hội dồng duyệt
 	    const DANG_THUC_HIEN = 2;
 	    const HOAN_THANH = 3;
 	    const HUY = 4;

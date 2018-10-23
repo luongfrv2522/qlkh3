@@ -66,7 +66,7 @@
                     </td>
 
                     <td class=" last">
-                      <button type="button" class="btn btn-default btn-xs">Xem chi tiết</button>
+                      <button type="button" class="btn btn-default btn-xs"><a href="admin.php?controller=chitiet_detaibihuy&act=xem&id=<?php echo $rows->pk_madetai_id; ?>"">Xem chi tiết</a></button>
                     </td>
                     
                   
@@ -75,9 +75,7 @@
                 </tbody>
               </table>
             
-            <div>
-				<a href="#" class="btn btn-primary">Delete</a>
-			</div>
+           
               <!-- phân trang -->
 	          	<div class="card-footer" style="padding:5px !important">
 					<ul class="pagination">

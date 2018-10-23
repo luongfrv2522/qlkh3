@@ -36,6 +36,7 @@
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
+                    <th class="column-title">Trạng thái </th>
                     <th class="column-title">Action </th>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -64,20 +65,26 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
+                    <td class=" ">
+                      <?php 
+                        if($rows->c_trangthai == 0)
+                          echo "Chờ trưởng bộ phận duyệt";
+                        else if($rows->c_trangthai == 1)
+                          echo "Chờ hội đồng duyệt";
+                      ?>  
+                    </td>
 
                     <td class=" last">
-                      <button type="button" class="btn btn-default btn-xs">Xem chi tiết</button>
+                      
+                      <button type="button" class="btn btn-default btn-xs"><a href="admin.php?controller=chitiet_detaichoxetduyet&act=xem&id=<?php echo $rows->pk_madetai_id; ?>"">Xem chi tiết</a></button>
                     </td>
-                    
                   
                   </tr>
                 <?php endforeach; ?>
                 </tbody>
               </table>
             
-            <div>
-				<a href="#" class="btn btn-primary">Delete</a>
-			</div>
+            
               <!-- phân trang -->
 	          	<div class="card-footer" style="padding:5px !important">
 					<ul class="pagination">
@@ -95,6 +102,10 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() { 
+  });
+</script>
 <!-- /page content -->
 
 
