@@ -6,7 +6,7 @@
 			//---------
 			//phan trang
 			//quy dinh so ban ghi hien thi tren mot trang
-			$record_per_page = 5;
+			$record_per_page = 10;
 			//tinh tong so ban ghi
 			$total = $this->model->num_rows("select pk_user_id from tbl_user");
 			//tinh so trang
