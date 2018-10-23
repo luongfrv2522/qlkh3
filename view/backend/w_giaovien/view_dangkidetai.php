@@ -61,10 +61,15 @@
                     </td>
                     <td class=" "><?php echo $rows->file_mo_ta; ?></td>
 
-                    <td class=" last">
-                      <button type="button" class="btn btn-default btn-xs" value="<?php echo $rows->c_trangthai; ?>">Chờ phê duyệt</button>
+                    <td class="last">
+                      <?php 
+                        if($rows->c_trangthai == 0)
+                          echo "Chờ phê duyệt";
+                        else if($rows->c_trangthai == 1)
+                          echo "Chờ hội đồng duyệt";
+                      ?>  
                     </td>
-                    
+
                   </tr>
                 <?php endforeach; ?>
                 </tbody>
