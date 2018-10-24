@@ -31,7 +31,7 @@
 						header("location:hoidong.php");
 						break;
 					case USER_TYPE::ADMIN:
-						header("location:hoidong.php");
+						header("location:admin.php");
 						break;
 				}
 				//di chuyen den trang admin.php
