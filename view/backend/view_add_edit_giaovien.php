@@ -67,7 +67,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Ngày sinh
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        	<input type="text" name="c_ngaysinh" value="<?php echo isset($record->c_ngaysinh)?$record->c_ngaysinh:""; ?>" required class="date-picker form-control col-md-7 col-xs-12">
+                        	<input type="date" name="c_ngaysinh" value="<?php echo isset($record->c_ngaysinh)?$record->c_ngaysinh:""; ?>" required class="date-picker form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
