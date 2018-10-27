@@ -1,4 +1,43 @@
-  
+<?php 
+    include "db_connect.php";
+    include "public/backend/Classes/PHPExcel.php";
+    if(isset($_POST['import'])){
+        $file = $_FILES['file']['tmp_name'];
+        $objReader = PHPExcel_IOFactory::createReaderForFile($file);
+        //lấy tất cả các sheet excel
+        $listWorkSheets = $objReader->listWorksheetNames($file);
+
+        foreach($listWorkSheets as $c_tenbomon){
+            $sql = "INSERT INTO tbl_bomon(c_tenbomon) values('$c_tenbomon')";
+            $mysqli->query($sql);
+            $fk_mabomon_id = $mysqli->insert_id;
+            //lấy tên sheet
+            $objReader->setLoadSheetsOnly($c_tenbomon);
+            //nhận thông tin của sheet và truyền biến file
+            $objExcel = $objReader->load($file);
+            //các thành phần trong sheet
+            $sheetData = $objExcel->getActiveSheet()->toArray('null', true, true, true);
+
+            $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
+            for($row = 1; $row<=$highestRow; $row++){
+               
+                $c_fullname = $sheetData[$row]['A'];
+                $c_hocham = $sheetData[$row]['B'];
+                $c_hocvi = $sheetData[$row]['C'];
+                $c_ngaysinh = $sheetData[$row]['D'];
+                $c_diachi = $sheetData[$row]['E'];
+                $c_sdt = $sheetData[$row]['F'];
+                $c_email = $sheetData[$row]['G'];
+
+                $sql = "INSERT INTO tbl_user(fk_mabomon_id, c_fullname,c_hocham,c_hocvi,c_ngaysinh, c_diachi, c_sdt, c_email) values ($fk_mabomon_id,'$c_fullname','$c_hocham', '$c_hocvi', 'c_ngaysinh', '$c_diachi', $c_sdt, '$c_email')";
+                $mysqli->query($sql);
+            }
+        }
+        $message = "Thành công";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+        
+    }
+ ?>  
  <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -39,8 +78,13 @@
                       <input type="checkbox" id="check-all" class="flat">
                     </th>
                     <th class="column-title">Họ và tên </th>
+                    <th class="column-title">Bộ môn </th>
+                    <th class="column-title">Học hàm </th>
+                    <th class="column-title">Học vị </th>
+                    <th class="column-title">Ngày sinh </th>
+                    <th class="column-title">Địa chỉ </th>
+                    <th class="column-title">SĐT </th>
                     <th class="column-title">Email </th>
-               
                     <th class="column-title no-link last" ><span class="nobr">Action</span>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -55,15 +99,41 @@
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
                     <td class=" "><?php echo $rows->c_fullname; ?></td>
+                    <td class=" ">
+                      <?php 
+                        $bomon = $this->model->get_a_record("select c_tenbomon from tbl_bomon where pk_mabomon_id={$rows->fk_mabomon_id}");
+                        echo isset($bomon->c_tenbomon)?$bomon->c_tenbomon:"";
+                      ?>
+                    </td>
+                    <td class=" "><?php echo $rows->c_hocham; ?></td>
+                    <td class=" "><?php echo $rows->c_hocvi; ?></td>
+                     <td class=" ">
+                      <?php 
+                        $date = date_create($rows->c_ngaysinh);
+                        echo date_format($date,"d/m/Y");      
+                      ?>  
+                    </td>
+                    <td class=" "><?php echo $rows->c_diachi; ?></td>
+                    <td class=" "><?php echo $rows->c_sdt; ?></td>
                     <td class=" "><?php echo $rows->c_email; ?></td>
                     <td class=" last">
                     	<a href="admin.php?controller=add_edit_user&act=edit&id=<?php echo $rows->pk_user_id; ?>">Edit</a>&nbsp;&nbsp;
-						<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=add_edit_user&act=delete&id=<?php echo $rows->pk_user_id; ?>">Delete</a>
+						          <a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=add_edit_user&act=delete&id=<?php echo $rows->pk_user_id; ?>">Delete</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
                 </tbody>
               </table>
+
+               <div class="outer-container">
+              <form action="" method="post" name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+                  <div>
+                      <label>Choose Excel File</label> 
+                      <input type="file" name="file" id="file" accept=".xls,.xlsx">
+                      <button type="submit" id="submit" name="import" class="btn-submit">Import</button>
+                  </div>
+              </form>
+          </div>
 
             <div>
 				<a href="#" class="btn btn-primary">Delete</a>

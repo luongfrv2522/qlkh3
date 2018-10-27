@@ -17,6 +17,7 @@
 					if($c_password == $record->c_password){
 						//so khop duoc ca email va password, co nghia la dang nhap thanh cong
 						$_SESSION["SS_USER"] = $record;						
+						
 					}
 				}
 				//load file view

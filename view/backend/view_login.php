@@ -1,4 +1,6 @@
-
+<?php //load file common
+  include_once "public/backend/Classes/Common.php"; 
+  ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

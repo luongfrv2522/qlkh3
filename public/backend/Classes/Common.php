@@ -19,7 +19,7 @@
 	 * @param {string} $Url [Đường dẫn folder muốn lưu: folder/folder1/]
 	 * @param {string} $file [key of file in FormData]
 	 */
-	function UploadImage($file, $Url){
+	function Upload($file, $Url){
 		$_ReturnData = new StdClass;
 		//ECHO var_dump($_FILES['file']['name']);
 		if(isset($_FILES[$file])){

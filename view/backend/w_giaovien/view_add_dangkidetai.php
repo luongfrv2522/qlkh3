@@ -59,7 +59,28 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">File mô tả 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="file_mo_ta" value="<?php echo isset($record->file_mo_ta)?$record->file_mo_ta:""; ?>" required class="form-control col-md-7 col-xs-12">
+                          <input type="file" name="file_mo_ta" id="file_mo_ta" value="" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Chủ nhiệm đề tài 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                           <input type="text" name="" value="<?=$_SESSION['SS_USER']->c_fullname?>" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Người thực hiện đề tài 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select name="thanh_vien[]" class="select2_multiple form-control" multiple="multiple">
+                            <?php  $arr = $this->model->get_all("select * from tbl_user where UserType = 1");?>
+                            <?php foreach($arr as $rows): ?>
+                            <option value="<?=$rows->pk_user_id?>"><?=$rows->c_fullname?> - <?=$rows->c_email?></option>
+                            <?php endforeach; ?>
+                          </select>
                         </div>
                       </div>
 

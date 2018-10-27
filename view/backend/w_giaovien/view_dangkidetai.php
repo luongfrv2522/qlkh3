@@ -34,6 +34,7 @@
                     <th class="column-title">Đến ngày </th>
                     <th class="column-title">File mô tả </th>
                     <th class="column-title">Trạng thái </th>
+                    <th class="column-title">Action </th>
                     
                     
                   </tr>
@@ -59,9 +60,9 @@
               echo date_format($date,"d/m/Y");      
             ?>  
                     </td>
-                    <td class=" "><?php echo $rows->file_mo_ta; ?></td>
+                    <td class=" "><a href="<?php echo $rows->file_mo_ta; ?>">Download</a></td>
 
-                    <td class="last">
+                    <td class=" ">
                       <?php 
                         if($rows->c_trangthai == 0)
                           echo "Chờ phê duyệt";
@@ -74,6 +75,11 @@
                         else if($rows->c_trangthai == 4)
                           echo "Đã hủy";
                       ?>  
+                    </td>
+
+                     <td class=" last">
+                      
+                      <button type="button" class="btn btn-default btn-xs"><a href="giaovien.php?controller=chitiet_dangkidetai&act=xem&id=<?php echo $rows->pk_madetai_id; ?>"">Xem chi tiết</a></button>
                     </td>
 
                   </tr>
