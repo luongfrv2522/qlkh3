@@ -21,6 +21,28 @@
 
       <div class="clearfix"></div>
 
+        <div class="control-label col-md-0 col-sm-1 col-xs-12">Chọn năm:</div>
+        <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
+          <select class="form-control">
+            <option>Choose option</option>
+            <option>Option one</option>
+            <option>Option two</option>
+            <option>Option three</option>
+            <option>Option four</option>
+          </select>
+        </div>
+
+        <div class="control-label col-md-0 col-sm-1 col-xs-12">Bộ môn:</div>
+        <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
+          <select class="form-control">
+            <option>Choose option</option>
+            <option>Option one</option>
+            <option>Option two</option>
+            <option>Option three</option>
+            <option>Option four</option>
+          </select>
+        </div>
+
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_content">
