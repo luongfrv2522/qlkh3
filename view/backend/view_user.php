@@ -8,9 +8,11 @@
         $listWorkSheets = $objReader->listWorksheetNames($file);
 
         foreach($listWorkSheets as $c_tenbomon){
-            $sql = "INSERT INTO tbl_bomon(c_tenbomon) values('$c_tenbomon')";
-            $mysqli->query($sql);
-            $fk_mabomon_id = $mysqli->insert_id;
+            $sql = "select * from tbl_bomon where c_tenbomon = '$c_tenbomon'";
+            global $db;
+            $result = mysqli_query($db,$sql);
+            $rows = mysqli_fetch_object($result);
+            $fk_mabomon_id = $rows->pk_mabomon_id;
             //lấy tên sheet
             $objReader->setLoadSheetsOnly($c_tenbomon);
             //nhận thông tin của sheet và truyền biến file
@@ -20,7 +22,7 @@
 
             $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
             for($row = 1; $row<=$highestRow; $row++){
-               
+               //$myDateTime = DateTime::createFromFormat('Y-m-d', $dateString);
                 $c_fullname = $sheetData[$row]['A'];
                 $c_hocham = $sheetData[$row]['B'];
                 $c_hocvi = $sheetData[$row]['C'];
@@ -28,8 +30,11 @@
                 $c_diachi = $sheetData[$row]['E'];
                 $c_sdt = $sheetData[$row]['F'];
                 $c_email = $sheetData[$row]['G'];
-
-                $sql = "INSERT INTO tbl_user(fk_mabomon_id, c_fullname,c_hocham,c_hocvi,c_ngaysinh, c_diachi, c_sdt, c_email) values ($fk_mabomon_id,'$c_fullname','$c_hocham', '$c_hocvi', 'c_ngaysinh', '$c_diachi', $c_sdt, '$c_email')";
+                //Conver ngay sinh
+                $c_ngaysinh = explode('/',$c_ngaysinh);
+                $c_ngaysinh = $c_ngaysinh[2].'-'.$c_ngaysinh[1].'-'.$c_ngaysinh[0];
+                //
+                $sql = "INSERT INTO tbl_user(fk_mabomon_id, c_fullname,c_hocham,c_hocvi,c_ngaysinh, c_diachi, c_sdt, c_email) values ($fk_mabomon_id,'$c_fullname','$c_hocham', '$c_hocvi', '$c_ngaysinh', '$c_diachi', $c_sdt, '$c_email')";
                 $mysqli->query($sql);
             }
         }
@@ -94,7 +99,7 @@
                 </thead>
                 <tbody>
                 <?php foreach($arr as $rows): ?>
-                  <tr class="even pointer">
+                  <tr id="<?=$rows->pk_user_id?>" class="even pointer">
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
@@ -136,7 +141,27 @@
           </div>
 
             <div>
-				<a href="#" class="btn btn-primary">Delete</a>
+        <script type="text/javascript">
+          function DeleteMulti(){
+            if(window.confirm('Are you sure?')){
+              var listId = "";
+              $('tr.selected').each(function(){
+                listId += $(this).attr('id')+",";
+              });
+              listId = listId.substr(0,listId.length - 1);
+              //alert(listId);
+              var listId = "";
+              $('tr.selected').each(function(){
+                listId += $(this).attr('id')+",";
+              });
+              listId = listId.substr(0,listId.length - 1);
+              //alert(listId);
+              $('#btn_mutiDelete').attr('href',$('#btn_mutiDelete').attr('href')+","+ listId);
+              
+            }
+          }
+        </script>
+				<a id="btn_mutiDelete" onclick="DeleteMulti();" href="admin.php?controller=add_edit_user&act=deleteMuti&listId=0">Delete</a>
 			</div>
               <!-- phân trang -->
 	          	<div class="card-footer" style="padding:5px !important">

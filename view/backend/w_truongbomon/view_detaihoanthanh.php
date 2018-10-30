@@ -24,11 +24,10 @@
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Chọn năm:</div>
         <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
           <select class="form-control">
-            <option>Choose option</option>
-            <option>Option one</option>
-            <option>Option two</option>
-            <option>Option three</option>
-            <option>Option four</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
           </select>
         </div>
         

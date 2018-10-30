@@ -18,31 +18,55 @@
         </div>
       </div>
     </div>
-
-      <div class="clearfix"></div>
+      <form method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
+        <div class="clearfix"></div>
 
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Chọn năm:</div>
-        <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
-          <select class="form-control">
-            <option>Choose option</option>
-            <option>Option one</option>
-            <option>Option two</option>
-            <option>Option three</option>
-            <option>Option four</option>
+        <div class="col-md-3 col-sm-3 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
+          <select class="form-control" name="nam" id="nam">
+            <option value="0">Tất cả</option>
+            <?php 
+              $selected = isset($year)?$year:date("Y");
+              // if(isset($year)){
+              //   $selected = $year;
+              // }else if(isset($_GET['year'])){
+              //    $selected = $_GET['year'];
+              // }else{
+              //    $selected = date("Y");
+              // }
+              $nam = $this->model->get_all("select * from tbl_nam order by pk_nam_id desc");
+              foreach($nam as $rows):
+             ?>
+            <option <?php if(isset($rows->c_nam)&&$rows->c_nam==$selected): ?> selected <?php endif; ?> value="<?php echo $rows->c_nam; ?>"><?php echo $rows->c_nam; ?></option>
+            <?php endforeach; ?>
+          
           </select>
         </div>
 
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Bộ môn:</div>
         <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
-          <select class="form-control">
-            <option>Choose option</option>
-            <option>Option one</option>
-            <option>Option two</option>
-            <option>Option three</option>
-            <option>Option four</option>
+          <select class="form-control" name="bomon" id="bomon">
+          
+            <option value="0">Tất cả</option>
+             <?php 
+                // $mabomonn = "";
+                // if(isset($_GET['classB'])){
+                //   $mabomonn = $_GET['classB'];
+                // }else{
+                //    $mabomonn = $classB;
+                // }
+                $bomon = $this->model->get_all("select * from tbl_bomon order by pk_mabomon_id desc");
+                foreach($bomon as $rows):
+               ?>
+              <option <?php if(isset($rows->pk_mabomon_id)&&$rows->pk_mabomon_id==$classB): ?> selected <?php endif; ?> value="<?php echo $rows->pk_mabomon_id; ?>"><?php echo $rows->c_tenbomon; ?></option>
+              <?php endforeach; ?>
           </select>
-        </div>
 
+        </div>
+        <div class="control-label col-md-0 col-sm-1 col-xs-12" style="margin-bottom: 10px; margin-top: -7px;">
+          <button type="submit" name="Process" value="Process" class="btn btn-success">Submit</button>
+        </div>
+      </form>
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_content">
@@ -86,9 +110,17 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
-
+                    <script type="text/javascript">
+                      function xemChiTiet(){
+                        debugger
+                        var namm = $("#nam").val();
+                        var bomonn = $("#bomon").val();
+                        $('#btn_xemchitiet').attr('href',`${$('#btn_xemchitiet').attr('href')}&year=${namm}&classB=${bomonn}`);
+                        //alert($('#btn_xemchitiet').attr('href'));
+                      }
+                    </script>
                     <td class=" last">
-                      <button type="button" class="btn btn-default btn-xs"><a href="admin.php?controller=chitiet_detaihoanthanh&act=xem&id=<?php echo $rows->pk_madetai_id; ?>"">Xem chi tiết</a></button>                   
+                      <button type="button" class="btn btn-default btn-xs"><a id="btn_xemchitiet" onclick="xemChiTiet().call(this);" href="admin.php?controller=chitiet_detaihoanthanh&act=xem&id=<?=$rows->pk_madetai_id?>">Xem chi tiết</a></button>                   
                     </td>
                     
                   

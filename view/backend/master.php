@@ -14,7 +14,8 @@
     <link rel="icon" href="view/backend/images/favicon.ico" type="image/ico" />
 
     <title>Admin Page</title>
-
+    <!-- jQuery -->
+    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link href="public/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -135,8 +136,7 @@
 
 
 
-    <!-- jQuery -->
-    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
+    
     <!-- Bootstrap -->
     <script src="public/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

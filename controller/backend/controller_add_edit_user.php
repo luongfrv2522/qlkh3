@@ -74,6 +74,11 @@
 					//di chuyen den trang user
 					header("location:admin.php?controller=user");
 				break;
+				case "deleteMuti":
+					$listId = $_GET['listId'];
+					$this->model->execute("delete from tbl_user where pk_user_id in ($listId)");
+					header("location:admin.php?controller=user");
+				break;
 				default:
 					//di chuyen den trang user
 					header("location:admin.php?controller=user");

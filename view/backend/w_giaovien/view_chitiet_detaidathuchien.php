@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Danh sách đề tài hoàn thành</h3>
+                <h3>Đề tài đã thực hiện</h3>
               </div>
 
               <div class="title_right">
@@ -66,10 +66,40 @@
                         </div>
                       </div>
 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">File mô tả 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="file_mo_ta" value="<?php echo isset($record->file_mo_ta)?$record->file_mo_ta:""; ?>" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Chủ nhiệm đề tài 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <?php $item = $this->model->get_a_record("SELECT * FROM `tbl_user` where pk_user_id = $record->fk_user_id"); ?>
+                           <input type="text" name="file_mo_ta" value="<?=$item->c_fullname?>" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Người thực hiện đề tài 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="select2_multiple form-control" multiple="multiple">
+                            <?php  $arr = $this->model->get_all("SELECT * FROM tbl_user u join tbl_detai_user du on u.pk_user_id = du.fk_user_id join tbl_detai dt on dt.pk_madetai_id = du.fk_madetai_id where dt.pk_madetai_id =$record->pk_madetai_id")?>
+                            <?php foreach($arr as $rows): ?>
+                            <option value="<?=$rows->pk_user_id?>"><?=$rows->c_fullname?> - <?=$rows->c_email?></option>
+                            <?php endforeach; ?>
+                          </select>
+                        </div>
+                      </div>
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-primary" type="button"><a href="admin.php?controller=detaihoanthanh&year=<?=$year?>&classB=<?=$classB?>" style="color: white;">Cancel</a></button>
+                          <button class="btn btn-primary" type="button"><a href="giaovien.php?controller=detaidathuchien" style="color: white;">Cancel</a></button>
                         </div>
                       </div>
 
