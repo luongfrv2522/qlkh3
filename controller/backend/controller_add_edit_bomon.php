@@ -19,6 +19,7 @@
 				case "do_edit":
 					$c_tenbomon = $_POST["c_tenbomon"];
 					$c_truongbomon = $_POST["c_truongbomon"];
+					$fk_user_id = $_POST["fk_user_id"];
 					
 					//-----
 					//replace ky tu dac biet
@@ -27,7 +28,7 @@
 				
 					//-----
 					//update ban ghi
-					$this->model->execute("update tbl_bomon set c_tenbomon='$c_tenbomon', c_truongbomon='$c_truongbomon' where pk_mabomon_id=$id");
+					$this->model->execute("update tbl_bomon set c_tenbomon='$c_tenbomon', c_truongbomon='$c_truongbomon', fk_user_id=$fk_user_id where pk_mabomon_id=$id");
 					//di chuyen den trang 
 					header("location:admin.php?controller=bomon");
 				break;
@@ -41,7 +42,8 @@
 				case "do_add":
 					$c_tenbomon = $_POST["c_tenbomon"];
 					$c_truongbomon = $_POST["c_truongbomon"];
-					$this->model->execute("insert into tbl_bomon set c_tenbomon='$c_tenbomon', c_truongbomon='$c_truongbomon'");
+					$fk_user_id = $_POST["fk_user_id"];
+					$this->model->execute("insert into tbl_bomon set c_tenbomon='$c_tenbomon', c_truongbomon='$c_truongbomon',fk_user_id=$fk_user_id ");
 					//di chuyen den trang 
 					header("location:admin.php?controller=bomon");
 				break;

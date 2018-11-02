@@ -7,6 +7,7 @@
 			//------
 			$act = isset($_GET["act"]) ? $_GET["act"] : "";
 			$id = isset($_GET["id"])&&is_numeric($_GET["id"]) ? $_GET["id"] : 0;
+			$classB = isset($_GET["classB"])&&is_numeric($_GET["classB"]) ? $_GET["classB"] : 0;
 			switch($act){
 				//----
 				case "xem":

@@ -10,10 +10,10 @@
       <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <!-- <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
-            </span>
+            </span> -->
           </div>
         </div>
       </div>
@@ -36,6 +36,7 @@
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
+                    <th class="column-title">File mô tả </th>
                     <th class="column-title">Trạng thái </th>
                     <th class="column-title">Action </th>
                     </th>
@@ -65,6 +66,7 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
+                    <td class=" "><a href="<?php echo $rows->file_mo_ta; ?>">Download</a></td>
                     <td class=" ">
                       <?php 
                         if($rows->c_trangthai == 0)

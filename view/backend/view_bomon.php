@@ -10,10 +10,10 @@
       <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <!-- <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
-            </span>
+            </span> -->
           </div>
         </div>
       </div>
@@ -40,6 +40,7 @@
                     </th>
                     <th class="column-title">Tên bộ môn </th>
                     <th class="column-title">Trưởng bộ môn </th>
+                    <th class="column-title">UserID </th>
                
                     <th class="column-title no-link last" ><span class="nobr">Action</span>
                     </th>
@@ -56,6 +57,7 @@
                     </td>
                     <td class=" "><?php echo $rows->c_tenbomon; ?></td>
                     <td class=" "><?php echo $rows->c_truongbomon; ?></td>
+                    <td class=" "><?php echo $rows->fk_user_id; ?></td>
                     <td class=" last">
                     	<a href="admin.php?controller=add_edit_bomon&act=edit&id=<?php echo $rows->pk_mabomon_id; ?>">Edit</a>&nbsp;&nbsp;
 						<a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=add_edit_bomon&act=delete&id=<?php echo $rows->pk_mabomon_id; ?>">Delete</a>

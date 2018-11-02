@@ -24,12 +24,13 @@
 					$c_diachi = $_POST["c_diachi"];
 					$c_sdt = $_POST["c_sdt"];
 					$c_password = $_POST["c_password"];
+					$UserType = $_POST["UserType"];
 					//-----
 					//replace ky tu dac biet
 					$c_fullname = str_replace("'", "\'", $c_fullname);
 					//-----
 					//update ban ghi
-					$this->model->execute("update tbl_user set c_fullname='$c_fullname',fk_mabomon_id=$fk_mabomon_id, c_hocham='$c_hocham',c_hocvi='$c_hocvi', c_ngaysinh='$c_ngaysinh', c_diachi='$c_diachi', c_sdt=$c_sdt, where pk_user_id=$id");
+					$this->model->execute("update tbl_user set c_fullname='$c_fullname',fk_mabomon_id=$fk_mabomon_id, c_hocham='$c_hocham',c_hocvi='$c_hocvi', c_ngaysinh='$c_ngaysinh', c_diachi='$c_diachi', c_sdt=$c_sdt, UserType=$UserType where pk_user_id=$id");
 					//neu password khong bang rong thi update password
 					if($c_password != ""){
 						//ma hoa password
@@ -56,6 +57,7 @@
 					$c_sdt = $_POST["c_sdt"];
 					$c_email = $_POST["c_email"];
 					$c_password = $_POST["c_password"];
+					$UserType = $_POST["UserType"];
 					//-----
 					//replace ky tu dac biet
 					$c_fullname = str_replace("'", "\'", $c_fullname);
@@ -64,7 +66,7 @@
 					//ma hoa password
 					$c_password = md5($c_password);
 					//insert ban ghi
-					$this->model->execute("insert into tbl_user(c_fullname,fk_mabomon_id, c_hocham, c_hocvi, c_ngaysinh, c_diachi, c_sdt,c_email,c_password) values('$c_fullname', '$fk_mabomon_id', '$c_hocham', '$c_hocvi', '$c_ngaysinh', '$c_diachi', '$c_sdt','$c_email','$c_password')");
+					$this->model->execute("insert into tbl_user(c_fullname,fk_mabomon_id, c_hocham, c_hocvi, c_ngaysinh, c_diachi, c_sdt,c_email,c_password, UserType) values('$c_fullname', '$fk_mabomon_id', '$c_hocham', '$c_hocvi', '$c_ngaysinh', '$c_diachi', '$c_sdt','$c_email','$c_password', '$UserType')");
 					//di chuyen den trang user
 					header("location:admin.php?controller=user");
 				break;

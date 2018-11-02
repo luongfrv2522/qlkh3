@@ -6,23 +6,12 @@
       <div class="title_left">
         <h3>Danh sách đề tài đã hoàn thành</h3>
       </div>
-
-      <div class="title_right">
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="clearfix"></div>
       <form method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
-        <div class="clearfix"></div>
+       
 
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Chọn năm:</div>
-        <div class="col-md-3 col-sm-3 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
+        <div class="col-md-3 col-sm-3 col-xs-12" >
           <select class="form-control" name="nam" id="nam">
             <option value="0">Tất cả</option>
             <?php 
@@ -42,9 +31,9 @@
           
           </select>
         </div>
-
+        <!-- lọc bộ môn -->
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Bộ môn:</div>
-        <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
+        <div class="col-md-4 col-sm-4 col-xs-12" >
           <select class="form-control" name="bomon" id="bomon">
           
             <option value="0">Tất cả</option>
@@ -61,9 +50,9 @@
               <option <?php if(isset($rows->pk_mabomon_id)&&$rows->pk_mabomon_id==$classB): ?> selected <?php endif; ?> value="<?php echo $rows->pk_mabomon_id; ?>"><?php echo $rows->c_tenbomon; ?></option>
               <?php endforeach; ?>
           </select>
-
         </div>
-        <div class="control-label col-md-0 col-sm-1 col-xs-12" style="margin-bottom: 10px; margin-top: -7px;">
+        <!-- end lọc bộ môn -->
+        <div class="control-label col-md-0 col-sm-1 col-xs-12" >
           <button type="submit" name="Process" value="Process" class="btn btn-success">Submit</button>
         </div>
       </form>
@@ -82,6 +71,7 @@
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
+                    <th class="column-title">File mô tả </th>
                     <th class="column-title">Action </th>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -110,6 +100,7 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
+                    <td class=" "><a href="<?php echo $rows->file_mo_ta; ?>">Download</a></td>
                     <script type="text/javascript">
                       function xemChiTiet(){
                         debugger

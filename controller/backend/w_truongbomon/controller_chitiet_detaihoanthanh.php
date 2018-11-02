@@ -7,6 +7,7 @@
 			//------
 			$act = isset($_GET["act"]) ? $_GET["act"] : "";
 			$id = isset($_GET["id"])&&is_numeric($_GET["id"]) ? $_GET["id"] : 0;
+			$year = isset($_GET["year"])&&is_numeric($_GET["year"]) ? $_GET["year"] : 0;
 			switch($act){
 				//----
 				case "xem":

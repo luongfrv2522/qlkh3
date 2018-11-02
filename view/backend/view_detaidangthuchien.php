@@ -7,7 +7,7 @@
         <h3>Danh sách đề tài đang thực hiện</h3>
       </div>
 
-      <div class="title_right">
+     <!--  <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for...">
@@ -17,19 +17,38 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-      <div class="clearfix"></div>
-      <div class="control-label col-md-0 col-sm-1 col-xs-12">Bộ môn:</div>
-        <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
-          <select class="form-control">
-            <option>Choose option</option>
-            <option>Option one</option>
-            <option>Option two</option>
-            <option>Option three</option>
-            <option>Option four</option>
+      <form method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
+        <div class="clearfix"></div>
+
+       
+        <!-- lọc bộ môn -->
+        <div class="control-label col-md-0 col-sm-1 col-xs-12">Bộ môn:</div>
+        <div class="col-md-4 col-sm-4 col-xs-12" >
+          <select class="form-control" name="bomon" id="bomon">
+          
+            <option value="0">Tất cả</option>
+             <?php 
+                // $mabomonn = "";
+                // if(isset($_GET['classB'])){
+                //   $mabomonn = $_GET['classB'];
+                // }else{
+                //    $mabomonn = $classB;
+                // }
+                $bomon = $this->model->get_all("select * from tbl_bomon order by pk_mabomon_id desc");
+                foreach($bomon as $rows):
+               ?>
+              <option <?php if(isset($rows->pk_mabomon_id)&&$rows->pk_mabomon_id==$classB): ?> selected <?php endif; ?> value="<?php echo $rows->pk_mabomon_id; ?>"><?php echo $rows->c_tenbomon; ?></option>
+              <?php endforeach; ?>
           </select>
         </div>
+        <!-- end lọc bộ môn -->
+        
+        <div class="control-label col-md-0 col-sm-1 col-xs-12">
+          <button type="submit" name="Process" value="Process" class="btn btn-success">Submit</button>
+        </div>
+      </form>
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -46,6 +65,7 @@
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
+                    <th class="column-title">File mô tả </th>
                     <th class="column-title">Trạng thái </th>
                     <th class="column-title">Action </th>
                     </th>
@@ -75,7 +95,7 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
-
+                    <td class=" "><a href="<?php echo $rows->file_mo_ta; ?>">Download</a></td>
                     <td class=" ">
                       <?php 
                         if($rows->c_trangthai == 2)
@@ -87,9 +107,17 @@
                       ?>  
                     </td>
 
+                    <script type="text/javascript">
+                      function xemChiTiet(){
+                        debugger
+                       
+                        var bomonn = $("#bomon").val();
+                        $('#btn_xemchitiet').attr('href',`${$('#btn_xemchitiet').attr('href')}&classB=${bomonn}`);
+                        //alert($('#btn_xemchitiet').attr('href'));
+                      }
+                    </script>
                     <td class=" last">
-                     
-                      <button type="button" class="btn btn-default btn-xs"><a href="admin.php?controller=chitiet_detaidangthuchien&act=xem&id=<?php echo $rows->pk_madetai_id; ?>">Xem chi tiết</a></button>
+                      <button type="button" class="btn btn-default btn-xs"><a id="btn_xemchitiet" onclick="xemChiTiet().call(this);" href="admin.php?controller=chitiet_detaidangthuchien&act=xem&id=<?=$rows->pk_madetai_id?>">Xem chi tiết</a></button>                   
                     </td>
                     
                   

@@ -3,6 +3,7 @@
 		public $model;
 		public function __construct(){
 			$this->model = new model();
+			
 			//---------
 			//phan trang
 			//quy dinh so ban ghi hien thi tren mot trang

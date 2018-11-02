@@ -91,7 +91,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        	<input type="email" name="c_email" value="" <?php if(isset($record->c_email)): ?> disabled <?php else: ?> required <?php endif; ?> class="form-control col-md-7 col-xs-12">
+                        	<input <?php if(isset($record->c_email)) { ?> disabled <?php } ?> required type="email" name="c_email" value="<?php echo isset($record->c_email)?$record->c_email:""; ?>" class="form-control">
                         </div>
                       </div>
 
@@ -100,6 +100,14 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         	<input type="password" name="c_password" <?php if(isset($record->c_email)): ?> placeholder="Nhập password mới nếu muốn đổi password" <?php else: ?> required <?php endif; ?> class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >UserType <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="UserType" value="<?php echo isset($record->UserType)?$record->UserType:''; ?>" required class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 

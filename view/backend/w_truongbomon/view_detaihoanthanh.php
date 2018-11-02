@@ -10,10 +10,10 @@
       <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <!-- <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
-            </span>
+            </span> -->
           </div>
         </div>
       </div>
@@ -21,15 +21,32 @@
 
       <div class="clearfix"></div>
 
+        <form method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Chọn năm:</div>
-        <div class="col-md-4 col-sm-4 col-xs-12" style="margin-bottom: 7px; margin-top: -7px;">
-          <select class="form-control">
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
+        <div class="col-md-3 col-sm-3 col-xs-12" >
+          <select class="form-control" name="nam" id="nam">
+            <option value="0">Tất cả</option>
+            <?php 
+              $selected = isset($year)?$year:date("Y");
+              // if(isset($year)){
+              //   $selected = $year;
+              // }else if(isset($_GET['year'])){
+              //    $selected = $_GET['year'];
+              // }else{
+              //    $selected = date("Y");
+              // }
+              $nam = $this->model->get_all("select * from tbl_nam order by pk_nam_id desc");
+              foreach($nam as $rows):
+             ?>
+            <option <?php if(isset($rows->c_nam)&&$rows->c_nam==$selected): ?> selected <?php endif; ?> value="<?php echo $rows->c_nam; ?>"><?php echo $rows->c_nam; ?></option>
+            <?php endforeach; ?>
+          
           </select>
         </div>
+        <div class="control-label col-md-0 col-sm-1 col-xs-12" >
+          <button type="submit" name="Process" value="Process" class="btn btn-success">Submit</button>
+        </div>
+      </form>
         
         <div class="col-md-12 col-sm-12 col-xs-12">          
         <div class="x_panel">
@@ -46,6 +63,7 @@
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
+                    <th class="column-title">File mô tả </th>
                     <th class="column-title">Action </th>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -74,9 +92,18 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
-
+                    <td class=" "><a href="<?php echo $rows->file_mo_ta; ?>">Download</a></td>
+                    <script type="text/javascript">
+                      function xemChiTiet(){
+                        debugger
+                        var namm = $("#nam").val();
+                        var bomonn = $("#bomon").val();
+                        $('#btn_xemchitiet').attr('href',`${$('#btn_xemchitiet').attr('href')}&year=${namm}&classB=${bomonn}`);
+                        //alert($('#btn_xemchitiet').attr('href'));
+                      }
+                    </script>
                     <td class=" last">
-                      <button type="button" class="btn btn-default btn-xs"><a href="truongbomon.php?controller=chitiet_detaihoanthanh&act=xem&id=<?php echo $rows->pk_madetai_id; ?>"">Xem chi tiết</a></button>                   
+                      <button type="button" class="btn btn-default btn-xs"><a id="btn_xemchitiet" onclick="xemChiTiet().call(this);" href="truongbomon.php?controller=chitiet_detaihoanthanh&act=xem&id=<?=$rows->pk_madetai_id?>">Xem chi tiết</a></button>                   
                     </td>
                     
                   

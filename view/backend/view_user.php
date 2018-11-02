@@ -54,10 +54,10 @@
       <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <!-- <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
-            </span>
+            </span> -->
           </div>
         </div>
       </div>
@@ -82,6 +82,7 @@
                     <th>
                       <input type="checkbox" id="check-all" class="flat">
                     </th>
+                    <th class="column-title">UserID </th>
                     <th class="column-title">Họ và tên </th>
                     <th class="column-title">Bộ môn </th>
                     <th class="column-title">Học hàm </th>
@@ -90,6 +91,7 @@
                     <th class="column-title">Địa chỉ </th>
                     <th class="column-title">SĐT </th>
                     <th class="column-title">Email </th>
+                    <th class="column-title">UserType </th>
                     <th class="column-title no-link last" ><span class="nobr">Action</span>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -103,6 +105,7 @@
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
+                    <td class=" "><?php echo $rows->pk_user_id; ?></td>
                     <td class=" "><?php echo $rows->c_fullname; ?></td>
                     <td class=" ">
                       <?php 
@@ -121,6 +124,7 @@
                     <td class=" "><?php echo $rows->c_diachi; ?></td>
                     <td class=" "><?php echo $rows->c_sdt; ?></td>
                     <td class=" "><?php echo $rows->c_email; ?></td>
+                    <td class=" "><?php echo $rows->UserType; ?></td>
                     <td class=" last">
                     	<a href="admin.php?controller=add_edit_user&act=edit&id=<?php echo $rows->pk_user_id; ?>">Edit</a>&nbsp;&nbsp;
 						          <a onclick="return window.confirm('Are you sure?');" href="admin.php?controller=add_edit_user&act=delete&id=<?php echo $rows->pk_user_id; ?>">Delete</a>
@@ -161,7 +165,7 @@
             }
           }
         </script>
-				<a id="btn_mutiDelete" onclick="DeleteMulti();" href="admin.php?controller=add_edit_user&act=deleteMuti&listId=0">Delete</a>
+				<a id="btn_mutiDelete" onclick="DeleteMulti();" href="admin.php?controller=add_edit_user&act=deleteMuti&listId=0" class="btn btn-primary">Delete</a>
 			</div>
               <!-- phân trang -->
 	          	<div class="card-footer" style="padding:5px !important">

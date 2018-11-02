@@ -42,10 +42,18 @@
                         </div>
                       </div>
 
+                       <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">UserID <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="fk_user_id" value="<?php echo isset($record->fk_user_id)?$record->fk_user_id:""; ?>" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-primary" type="button">Cancel</button>
+                          <button class="btn btn-primary" type="button"><a href="admin.php?controller=bomon" style="color: white;">Cancel</a></button>
 						              <button class="btn btn-primary" type="reset" value="Reset">Reset</button>
                           <button type="submit" value="Process" class="btn btn-success">Submit</button>
                         </div>
