@@ -4,10 +4,8 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Danh sách đề tài chờ xét duyệt</h3>
+        <h3>Đề tài chờ xét duyệt</h3>
       </div>
-
-      
 
       <div class="clearfix"></div>
       <form method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
@@ -16,7 +14,7 @@
        
         <!-- lọc bộ môn -->
         <div class="control-label col-md-0 col-sm-1 col-xs-12">Bộ môn:</div>
-        <div class="col-md-4 col-sm-4 col-xs-12" >
+        <div class="col-md-3 col-sm-3 col-xs-12" >
           <select class="form-control" name="bomon" id="bomon">
           
             <option value="0">Tất cả</option>
@@ -58,6 +56,7 @@
                     <th class="column-title">Đến ngày </th>
                     <th class="column-title">File mô tả </th>
                     <th class="column-title">Trạng thái </th>
+                    <th class="column-title">Thông tin hội đồng </th>
                     <th class="column-title">Action </th>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -95,6 +94,7 @@
                           echo "Chờ hội đồng duyệt";
                       ?>  
                     </td>
+                    <td class=" "><a href="admin.php?controller=hoidong&IdDeTai=<?=$rows->pk_madetai_id?>&TenDeTai=<?=$rows->c_tendetai?>">Thông tin hội đồng</a></td>
 
                     <script type="text/javascript">
                       function xemChiTiet(){
