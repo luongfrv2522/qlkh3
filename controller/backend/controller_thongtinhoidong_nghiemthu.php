@@ -18,7 +18,7 @@
 			//quy dinh so ban ghi hien thi tren mot trang
 			$record_per_page = 5;
 			//tinh tong so ban ghi
-			$total = $this->model->num_rows("select pk_hoidong_id from tbl_hoidong_detai where fk_hoidongnghiemthu_id = $fk_hoidongnghiemthu_id");
+			$total = $this->model->num_rows("select pk_hoidong_id from tbl_hoidong_detai where fk_hoidongnghiemthu_id = $fk_hoidong_id");
 			//tinh so trang
 			$num_page = ceil($total/$record_per_page);
 			//lay bien p truyen tu url, bien nay se chi trang hien tai
@@ -27,7 +27,7 @@
 			$from = $p * $record_per_page;			
 			//---------
 			//lay toan bo ban ghi co phan trang
-			$arr = $this->model->get_all("select * from tbl_hoidong_detai where fk_hoidongnghiemthu_id = $fk_hoidongnghiemthu_id order by pk_hoidong_id desc limit $from,$record_per_page");
+			$arr = $this->model->get_all("select * from tbl_hoidong_detai where fk_hoidongnghiemthu_id = $fk_hoidong_id order by pk_hoidong_id desc limit $from,$record_per_page");
 			//load view
 			include "view/backend/view_thongtinhoidong_nghiemthu.php";
 		}

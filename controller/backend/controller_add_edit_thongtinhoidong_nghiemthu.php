@@ -9,7 +9,7 @@
 			$id = isset($_GET["id"])&&is_numeric($_GET["id"]) ? $_GET["id"] : 0;
 			if(isset($_GET["id"])){
 				$_SESSION['ID_HOIDONG_DT'] = $_GET["id"];
-			}
+			}	
 			$id_hd_dt = $_SESSION['ID_HOIDONG_DT'];
 			$fk_hoidong_id = $_SESSION["ID_HOIDONG"];
 
@@ -38,7 +38,7 @@
 					//update ban ghi
 					$this->model->execute("update tbl_hoidong_detai set fk_user_id=$fk_user_id, fk_vaitro_id=$fk_vaitro_id where pk_hoidong_id=$id_hd_dt");
 					//di chuyen den trang 
-					header("location:admin.php?controller=thongtinhoidong");
+					header("location:admin.php?controller=thongtinhoidong_nghiemthu");
 				break;
 				//----
 				case "add":

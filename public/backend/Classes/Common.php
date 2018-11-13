@@ -13,6 +13,7 @@
 	    const DANG_THUC_HIEN = 2;
 	    const HOAN_THANH = 3;
 	    const HUY = 4;
+	    const DA_CHAM = 5;
 	}
 	/**
 	 * Hàm hỗ trợ update ảnh

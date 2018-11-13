@@ -76,7 +76,7 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select name="thanh_vien[]" class="select2_multiple form-control" multiple="multiple">
-                            <?php  $arr = $this->model->get_all("select * from tbl_user where UserType = 1");?>
+                            <?php  $arr = $this->model->get_all("select * from tbl_user where UserType = 1 and fk_mabomon_id={$_SESSION['SS_USER']->fk_mabomon_id}");?>
                             <?php foreach($arr as $rows): ?>
                             <option value="<?=$rows->pk_user_id?>"><?=$rows->c_fullname?> - <?=$rows->c_email?></option>
                             <?php endforeach; ?>

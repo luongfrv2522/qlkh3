@@ -25,14 +25,24 @@
         <div class="x_panel">
           <div class="x_title">
              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
-
-                      <div class="form-group">
-                         <label class="control-label col-md-1 col-sm-1 col-xs-12" >Đề tài <span class="required">*</span>
-                        </label>
+                      <?php 
+                        $arrDt = $this->model->get_all('select * from tbl_detai dt join tbl_user u on dt.fk_user_id = u.pk_user_id join tbl_bomon bm on bm.pk_mabomon_id = u.fk_mabomon_id join tbl_hoidong hd on hd.fk_madetai_id = dt.pk_madetai_id where dt.c_trangthai=2 c');
+                      ?>
+                       <div class="form-group">
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12">Đề tài</label>
                         <div class="col-md-5 col-sm-5 col-xs-12">
-                          <input class="form-control col-md-7 col-xs-12"> 
+                          <select name="fk_madetai_id" class="form-control col-md-7 col-xs-12">
+                            <?php 
+                              
+                              foreach($arrDt as $rows):
+                             ?>
+                            <option <?php if(isset($record->fk_madetai_id)&&$record->fk_madetai_id==$rows->pk_madetai_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_madetai_id; ?>"><?php echo $rows->c_tendetai; ?></option>
+                            <?php endforeach; ?>
+                          </select>
                         </div>
+                      
 
+                      
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" >Bộ môn <span class="required">*</span>
                         </label>
                         <div class="col-md-5 col-sm-5 col-xs-12">
