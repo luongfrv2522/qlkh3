@@ -63,8 +63,7 @@
                   <li><a><i class="fa fa-desktop"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       
-                      <li><a href="truongbomon.php?controller=nhomtruong">Danh sách nhóm trưởng đề tài</a></li>
-                      <li><a href="truongbomon.php?controller=nguoithamgia">Danh sách người tham gia</a></li>
+                     
                       <li><a href="truongbomon.php?controller=lichbaove">Xem lịch bảo vệ</a></li>
                       <li><a href="truongbomon.php?controller=baocaotiendo">Xem tiến độ đề tài</a></li>
                       <li><a href="truongbomon.php?controller=hoidong">Xem hội đồng</a></li>

@@ -52,25 +52,19 @@
                 <ul class="nav side-menu">
                   <li><a href="#"><i class="fa fa-home"></i> Home </a></li>
 
-                  <li><a><i class="fa fa-edit"></i> Quản lý đề tài <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="hoidong.php?controller=detaihoanthanh">Đề tài đã hoàn thành</a></li>
-                      <li><a href="hoidong.php?controller=detaidangthuchien">Đề tài đang thực hiện</a></li>
-                      <li><a href="hoidong.php?controller=detaichoxetduyet">Đề tài chờ xét duyệt</a></li>
-                      <li><a href="hoidong.php?controller=detaibihuy">Đề tài bị hủy</a></li>
-                    </ul>
-                  </li>
                   <li><a><i class="fa fa-desktop"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-        
-                      
                       <li><a href="hoidong.php?controller=lichbaove">Xem lịch bảo vệ</a></li>
-                      <li><a href="hoidong.php?controller=tiendo">Xem tiến độ đề tài</a></li>
                       <li><a href="hoidong.php?controller=hoidong">Xem hội đồng</a></li>
                     </ul>
                   </li>
-                  
-                   <li><a href="hoidong.php?controller=phieuchamdetai"><i class="fa fa-desktop"></i> Phiếu chấm đề tài 
+
+                  <li><a href="hoidong.php?controller=detaichoxetduyet"><i class="fa fa-edit"></i>Đề tài chờ xét duyệt</a> 
+                    
+                  </li>
+
+
+                   <li><a href="hoidong.php?controller=phieuchamdetai"><i class="fa fa-desktop"></i> Phiếu chấm đề tài </a>
                   </li>
                   
                 

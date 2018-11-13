@@ -65,10 +65,9 @@
                   <li><a><i class="fa fa-desktop"></i> Danh mục quản lý <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="admin.php?controller=user">Quản lý người dùng</a></li>
-                      <li><a href="admin.php?controller=giaovien">Quản lý giáo viên</a></li>
                       <li><a href="admin.php?controller=bomon">Quản lý bộ môn</a></li>
                       <li><a href="admin.php?controller=lichbaove">Quản lý lịch bảo vệ</a></li>
-                      <li><a href="admin.php?controller=tiendo">Quản lý tiến độ đề tài</a></li>
+                     
                       <li><a href="admin.php?controller=news">Quản lý tin tức</a></li>
                     </ul>
                   </li>
