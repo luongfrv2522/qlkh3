@@ -7,7 +7,7 @@
 			//------
 			$act = isset($_GET["act"]) ? $_GET["act"] : "";
 			$id = isset($_GET["id"])&&is_numeric($_GET["id"]) ? $_GET["id"] : 0;
-			$fk_madetai_id = $_SESSION["ID_DETAI"];
+			
 
 			//print '<script>alert("'.$fk_madetai_id.'");</script>';
 			switch($act){
@@ -21,16 +21,12 @@
 				break;
 				case "do_edit":
 				
-					$fk_user_id = $_POST["fk_user_id"];
-					$fk_vaitro_id = $_POST["fk_vaitro_id"];
-					if($fk_vaitro_id != 1){
-						$hdrc = $this->model->get_a_record("select * from tbl_hoidong where pk_hoidong_id=$id");
-						$this->model->execute("UPDATE `tbl_user` SET `UserType` = $hdrc->UserType_backup WHERE `tbl_user`.`pk_user_id` = $fk_user_id ");
-					}else{
-						$this->model->execute("UPDATE `tbl_user` SET `UserType` = '3' WHERE `tbl_user`.`pk_user_id` = $fk_user_id ");
-					}
+					$c_tenhoidong = $_POST["c_tenhoidong"];
+					$fk_madetai_id = $_POST["fk_madetai_id"];
+					
+					
 					//update ban ghi
-					$this->model->execute("update tbl_hoidong set fk_user_id=$fk_user_id, fk_vaitro_id=$fk_vaitro_id where pk_hoidong_id=$id");
+					$this->model->execute("update tbl_hoidong set c_tenhoidong='$c_tenhoidong',fk_madetai_id='$fk_madetai_id' where pk_hoidong_id=$id");
 					//di chuyen den trang 
 					header("location:admin.php?controller=hoidong");
 				break;
@@ -43,22 +39,16 @@
 				//----
 				case "do_add":
 					
-					$fk_user_id = $_POST["fk_user_id"];
-					$fk_vaitro_id = $_POST["fk_vaitro_id"];
-					$userRc = $this->model->get_a_record("select * from tbl_user where pk_user_id=$fk_user_id");
-					$this->model->execute("insert into tbl_hoidong set fk_user_id=$fk_user_id, fk_vaitro_id=$fk_vaitro_id, fk_madetai_id = $fk_madetai_id, UserType_backup=$userRc->UserType ");
-					if($fk_vaitro_id == 1){
-						$this->model->execute("UPDATE `tbl_user` SET `UserType` = '3' WHERE `tbl_user`.`pk_user_id` = $fk_user_id ");
-					}
+					$c_tenhoidong = $_POST["c_tenhoidong"];
+					$fk_madetai_id = $_POST["fk_madetai_id"];
+					
+					$this->model->execute("insert into tbl_hoidong set c_tenhoidong='$c_tenhoidong', fk_madetai_id='$fk_madetai_id'");
 					//di chuyen den trang 
 					header("location:admin.php?controller=hoidong");
 				break;
 				//----
 				case "delete":
-					$hdrc = $this->model->get_a_record("select * from tbl_hoidong where pk_hoidong_id=$id");
-					if($hdrc->fk_vaitro_id == 1){
-						$this->model->execute("UPDATE `tbl_user` SET `UserType` = $hdrc->UserType_backup WHERE `tbl_user`.`pk_user_id` = $hdrc->fk_user_id ");
-					}
+					
 					//--------
 					$this->model->execute("delete from tbl_hoidong where pk_hoidong_id=$id");
 					//di chuyen den trang 

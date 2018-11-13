@@ -4,7 +4,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Hội đồng của đề tài: <?=$_SESSION["TEN_DETAI"]?></h3>
+        <h3>Hội đồng duyệt đề tài</h3>
       </div>
 
       <div class="title_right">
@@ -38,9 +38,13 @@
                     <th>
                       <input type="checkbox" id="check-all" class="flat">
                     </th>
-                    <th class="column-title">ID giám khảo </th>
-                    <th class="column-title">Giám khảo </th>
-                    <th class="column-title">Vai trò </th>
+                  
+                    <th class="column-title">Tên hội đồng </th>
+                    <th class="column-title">Đề tài </th>
+                    <th class="column-title">Bộ môn </th>
+                    <th class="column-title">Thành viên hội đồng </th>
+                    <th class="column-title">Trạng thái </th>
+                    
                     <th class="column-title no-link last" ><span class="nobr">Action</span></th>
                     <th class="bulk-actions" colspan="7">
                       <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -49,23 +53,27 @@
                 </thead>
                 <tbody>
                 <?php foreach($arr as $rows): ?>
-                  <tr id="<?=$rows->pk_thanhvienhoidong_id?>" class="even pointer">
+                  <tr  class="even pointer">
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
-                    <td class=" "><?php echo $rows->pk_hoidong_id; ?></td>
-                    <td class=" ">
+                    
+                    <td class=" "><?php echo $rows->c_tenhoidong; ?></td>
+                     <td class=" ">
                       <?php 
-                        $giamkhao = $this->model->get_a_record("select c_fullname from tbl_user where pk_user_id={$rows->fk_user_id}");
-                        echo isset($giamkhao->c_fullname)?$giamkhao->c_fullname:"";
+                        $detai = $this->model->get_a_record("select c_tendetai from tbl_detai where pk_madetai_id={$rows->fk_madetai_id}");
+                        echo isset($detai->c_tendetai)?$detai->c_tendetai:"";
                       ?>
                     </td>
+                    <?php $bomon = $this->model->get_a_record("select * from tbl_detai dt join tbl_user u on u.pk_user_id = dt.fk_user_id join tbl_bomon bm on bm.pk_mabomon_id=u.fk_mabomon_id where dt.pk_madetai_id =".$rows->fk_madetai_id); ?>
+                    <td class=""><?=$bomon->c_tenbomon?></td>
+
                     <td class=" ">
-                      <?php 
-                        $vaitro = $this->model->get_a_record("select c_vaitro from tbl_vaitro where pk_vaitro_id={$rows->fk_vaitro_id}");
-                        echo isset($vaitro->c_vaitro)?$vaitro->c_vaitro:"";
-                      ?>
+                      <button type="button" class="btn btn-success btn-xs">
+                      <a href="admin.php?controller=thongtinhoidong&IdHoiDong=<?=$rows->pk_hoidong_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>" style="color: white;">Thành viên hội đồng</a></button> 
                     </td>
+                    <?php  $thanhvien = $this->model->num_rows("SELECT * FROM `tbl_hoidong_detai` where fk_hoidong_id =".$rows->pk_hoidong_id); ?>
+                    <td class=" "><?=(($thanhvien>0)?'Đã lập thành viên':'Chưa lập thành viên')?></td>
                  
                     <td class=" last">
                     	<a href="admin.php?controller=add_edit_hoidong&act=edit&id=<?php echo $rows->pk_hoidong_id; ?>">Edit</a>&nbsp;&nbsp;
@@ -101,10 +109,7 @@
 				
 			</div>
            
-        <div class="col-md-offset">
-          <button class="btn btn-primary" type="button"><a href="admin.php?controller=detaichoxetduyet" style="color: white;">Cancel</a></button>
-          
-        </div>
+        
       </div>
 			
             </div>

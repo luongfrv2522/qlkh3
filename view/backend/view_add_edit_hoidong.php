@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Thêm hội đồng</h3>
+                <h3>Thêm hội đồng duyệt đề tài</h3>
               </div>
 
               <div class="title_right">
@@ -25,34 +25,46 @@
                     <br />
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
 
-
-                      <div class="form-group"> 
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Thành viên</label>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                          <select name="fk_user_id" class="form-control col-md-7 col-xs-12">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Bộ môn</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select name="fk_mabomon_id" class="form-control col-md-7 col-xs-12">
                             <?php 
-                              $giamkhao = $this->model->get_all("select * from tbl_user order by pk_user_id desc");
-                              foreach($giamkhao as $rows):
+                              $bomon = $this->model->get_all("select * from tbl_bomon order by pk_mabomon_id desc");
+                              foreach($bomon as $rows):
                              ?>
-                            <option <?php if(isset($record->fk_user_id)&&$record->fk_user_id==$rows->pk_user_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_user_id; ?>"><?php echo $rows->c_fullname; ?></option>
+                            <option <?php if(isset($_GET['fk_mabomon_id']) && $_GET['fk_mabomon_id'] ==$rows->pk_mabomon_id){echo 'selected';} elseif(isset($record->fk_mabomon_id)&&$record->fk_mabomon_id==$rows->pk_mabomon_id){echo 'selected';}  ?> value="<?php echo $rows->pk_mabomon_id; ?>"><?php echo $rows->c_tenbomon; ?></option>
                             <?php endforeach; ?>
                           </select>
                         </div>
                       </div>
 
-                        <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Vai trò</label>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                          <select id="fk_vaitro_id" name="fk_vaitro_id" class="form-control col-md-7 col-xs-12">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Đề tài</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select name="fk_madetai_id" class="form-control col-md-7 col-xs-12">
                             <?php 
-                              $vaitro = $this->model->get_all("select * from tbl_vaitro order by pk_vaitro_id desc");
-                              foreach($vaitro as $rows):
+                              $detai = $this->model->get_all("select * from tbl_detai dt join tbl_user u on u.pk_user_id = dt.fk_user_id  where dt.c_trangthai=1 ".(isset($_GET['fk_mabomon_id'])? " and u.fk_mabomon_id =".$_GET['fk_mabomon_id']:"")." order by pk_madetai_id desc");
+                              foreach($detai as $rows):
                              ?>
-                            <option <?php if(isset($record->fk_vaitro_id)&&$record->fk_vaitro_id==$rows->pk_vaitro_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_vaitro_id; ?>"><?php echo $rows->c_vaitro; ?></option>
+                            <option <?php if(isset($record->fk_madetai_id)&&$record->fk_madetai_id==$rows->pk_madetai_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_madetai_id; ?>"><?php echo $rows->c_tendetai; ?></option>
                             <?php endforeach; ?>
                           </select>
                         </div>
                       </div>
+
+                      
+
+                       <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Tên hội đồng <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="c_tenhoidong" value="<?php echo isset($record->c_tenhoidong)?$record->c_tenhoidong:""; ?>" required class="form-control col-md-7 col-xs-12" id="first-name">
+                        </div>
+                      </div>
+
+
+    
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -73,7 +85,40 @@
           </div>
         </div>
         <!-- /page content -->
+  <script type="text/javascript">
+    function URL_add_parameter(url, param, value){
+    var hash       = {};
+    var parser     = document.createElement('a');
 
+    parser.href    = url;
 
+    var parameters = parser.search.split(/\?|&/);
+
+    for(var i=0; i < parameters.length; i++) {
+        if(!parameters[i])
+            continue;
+
+        var ary      = parameters[i].split('=');
+        hash[ary[0]] = ary[1];
+    }
+
+    hash[param] = value;
+
+    var list = [];  
+    Object.keys(hash).forEach(function (key) {
+        list.push(key + '=' + hash[key]);
+    });
+
+    parser.search = '?' + list.join('&');
+    return parser.href;
+}
+  
+  $(function(){
+    $('select.form-control[name="fk_mabomon_id"]').on('change',function(){
+      //console.log($(this).val());
+      window.location.href = URL_add_parameter(window.location.href,'fk_mabomon_id',$(this).val());
+    });
+  });
+</script>
 
 

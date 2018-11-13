@@ -70,10 +70,15 @@
                       <li><a href="admin.php?controller=lichbaove">Quản lý lịch bảo vệ</a></li>
                       <li><a href="admin.php?controller=tiendo">Quản lý tiến độ đề tài</a></li>
                       <li><a href="admin.php?controller=news">Quản lý tin tức</a></li>
-                      <li><a href="admin.php?controller=hoidong">Quản lý hội đồng</a></li>
                     </ul>
                   </li>
-                  <li><a href="admin.php?controller=nghiemthu"><i class="fa fa-table"></i> Nghiệm thu đề tài </a></li>
+                  <li><a><i class="fa fa-desktop"></i> Quản lý hội đồng <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="admin.php?controller=hoidong">Hội đồng duyệt đề tài</a></li>
+                      <li><a href="admin.php?controller=hoidongnghiemthu">Hội đồng nghiệm thu</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="admin.php?controller=khoanmucdiem"><i class="fa fa-table"></i> Phiếu chấm nghiệm thu </a></li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Thống kê - Báo cáo <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">Chart JS</a></li>

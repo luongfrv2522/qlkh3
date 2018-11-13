@@ -12,7 +12,8 @@
     <link rel="icon" href="view/backend/images/favicon.ico" type="image/ico" />
 
     <title>Trưởng bộ môn</title>
-
+        <!-- jQuery -->
+    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link href="public/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -65,7 +66,7 @@
                       <li><a href="truongbomon.php?controller=nhomtruong">Danh sách nhóm trưởng đề tài</a></li>
                       <li><a href="truongbomon.php?controller=nguoithamgia">Danh sách người tham gia</a></li>
                       <li><a href="truongbomon.php?controller=lichbaove">Xem lịch bảo vệ</a></li>
-                      <li><a href="truongbomon.php?controller=tiendo">Xem tiến độ đề tài</a></li>
+                      <li><a href="truongbomon.php?controller=baocaotiendo">Xem tiến độ đề tài</a></li>
                       <li><a href="truongbomon.php?controller=hoidong">Xem hội đồng</a></li>
                     </ul>
                   </li>
@@ -124,8 +125,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
+
     <!-- Bootstrap -->
     <script src="public/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -166,6 +166,6 @@
     <script src="public/backend/build/js/custom.min.js"></script>
 
     
-  
+
   </body>
 </html>

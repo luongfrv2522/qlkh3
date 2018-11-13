@@ -31,6 +31,7 @@
 
     <!-- Custom Theme Style -->
     <link href="public/backend/build/css/custom.min.css" rel="stylesheet">
+    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -54,8 +55,14 @@
                   <li><a href="giaovien.php?controller=dangkidetai"><i class="fa fa-edit"></i> Đăng ký đề tài </a></li>
                   <li><a href="giaovien.php?controller=detaidathuchien"><i class="fa fa-edit"></i> Các đề tài đã thực hiện </a></li>
                   <li><a href="giaovien.php?controller=detaithamkhao"><i class="fa fa-edit"></i> Đề tài tham khảo </a></li>
+                  <li><a href="giaovien.php?controller=baocaotiendo"><i class="fa fa-edit"></i> Báo cáo tiến độ </a></li>
                   <li><a href="giaovien.php?controller=lichbaove"><i class="fa fa-edit"></i> Lịch bảo vệ </a></li>
-                  <li><a href="giaovien.php?controller=hoidong"><i class="fa fa-edit"></i> Hội đồng </a></li>
+                  <li><a><i class="fa fa-desktop"></i> Hội đồng <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="giaovien.php?controller=xemhoidong">Hội đồng duyệt đề tài</a></li>
+                      <li><a href="giaovien.php?controller=xemhoidongnghiemthu">Hội đồng nghiệm thu</a></li>
+                    </ul>
+                  </li>
                   <li><a href="giaovien.php?controller=ketquadetai"><i class="fa fa-edit"></i> Kết quả đề tài </a></li>
                   
                 
@@ -112,7 +119,7 @@
     </div>
 
     <!-- jQuery -->
-    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
+    
     <!-- Bootstrap -->
     <script src="public/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

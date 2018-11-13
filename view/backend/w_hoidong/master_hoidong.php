@@ -12,7 +12,8 @@
     <link rel="icon" href="view/backend/images/favicon.ico" type="image/ico" />
 
     <title>Hội đồng</title>
-
+    <!-- jQuery -->
+    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link href="public/backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -62,14 +63,15 @@
                   <li><a><i class="fa fa-desktop"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
         
-                      <li><a href="hoidong.php?controller=nhomtruong">Danh sách nhóm trưởng đề tài</a></li>
-                      <li><a href="hoidong.php?controller=nguoithamgia">Danh sách người tham gia</a></li>
+                      
                       <li><a href="hoidong.php?controller=lichbaove">Xem lịch bảo vệ</a></li>
                       <li><a href="hoidong.php?controller=tiendo">Xem tiến độ đề tài</a></li>
                       <li><a href="hoidong.php?controller=hoidong">Xem hội đồng</a></li>
                     </ul>
                   </li>
-                  <li><a href="hoidong.php?controller=ketquadetai"><i class="fa fa-table"></i> Xem kết quả đề tài </a></li>
+                  
+                   <li><a href="hoidong.php?controller=phieuchamdetai"><i class="fa fa-desktop"></i> Phiếu chấm đề tài 
+                  </li>
                   
                 
                 </ul>
@@ -124,8 +126,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="public/backend/vendors/jquery/dist/jquery.min.js"></script>
+    
     <!-- Bootstrap -->
     <script src="public/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

@@ -32,7 +32,9 @@
                       <input type="checkbox" id="check-all" class="flat">
                     </th>
                     <th class="column-title">Tên đề tài </th>
-                    <th class="column-title">Nội dung nghiên cứu </th>
+                    <th class="column-title">Bộ môn </th>
+                    <th class="column-title">Chủ nhiệm đề tài </th>
+                   
                     <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
@@ -52,7 +54,15 @@
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
                     <td class=" "><?php echo $rows->c_tendetai; ?></td>
-                    <td class=" "><?php echo $rows->c_noidungnghiencuu; ?></td>
+                    <td class=" ">
+                      <?=$rows->c_tenbomon?>
+                    </td>
+                    <td class=" ">
+
+                      <?=$rows->c_fullname?>
+
+                    </td>
+                    
                     <td class=" "><?php echo $rows->c_kinhphi; ?></td>
                     <td class=" ">
                     	<?php 
@@ -66,7 +76,7 @@
                         echo date_format($date,"d/m/Y");      
                       ?>  
                     </td>
-                    <td class=" "><a href="<?php echo $rows->file_mo_ta; ?>">Download</a></td>
+                    <td class=" "><button type="button" class="btn btn-info btn-xs"><a href="<?php echo $rows->file_mo_ta; ?>" style="color: white;">Download</a></button></td>
                     <td class=" ">
                       <?php 
                         if($rows->c_trangthai == 2)
