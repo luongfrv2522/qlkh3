@@ -35,18 +35,18 @@
 
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Điểm tối đa <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Điểm tối đa 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        	<input type="text" name="c_diemtoida" value="<?php echo isset($record->c_diemtoida)?$record->c_diemtoida:""; ?>" required class="form-control col-md-7 col-xs-12">
+                        	<input type="text" name="c_diemtoida" value="<?php echo isset($record->c_diemtoida)?$record->c_diemtoida:""; ?>"  class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
                        <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Điểm đánh giá <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Điểm đánh giá 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="c_diemdanhgia" value="<?php echo isset($record->c_diemdanhgia)?$record->c_diemdanhgia:""; ?>" required class="form-control col-md-7 col-xs-12">
+                          <input type="text" name="c_diemdanhgia" value="<?php echo isset($record->c_diemdanhgia)?$record->c_diemdanhgia:""; ?>" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 

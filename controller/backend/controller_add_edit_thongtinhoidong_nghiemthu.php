@@ -11,7 +11,7 @@
 				$_SESSION['ID_HOIDONG_DT'] = $_GET["id"];
 			}	
 			$id_hd_dt = $_SESSION['ID_HOIDONG_DT'];
-			$fk_hoidong_id = $_SESSION["ID_HOIDONG"];
+			$fk_hoidongnghiemthu_id = $_SESSION["ID_HOIDONG"];
 
 			//print '<script>alert("'.$fk_hoidong_id.'");</script>';
 			switch($act){
@@ -19,7 +19,7 @@
 				case "edit":
 					//lay 1 ban ghi truong ung voi id truyen vao
 					$record = $this->model->get_a_record("select * from tbl_hoidong_detai where pk_hoidong_id=$id");
-					$form_action = "admin.php?controller=add_edit_thongtinhoidong&act=do_edit&id=$id";
+					$form_action = "admin.php?controller=add_edit_thongtinhoidong_nghiemthu&act=do_edit&id=$id";
 					//load view
 					include "view/backend/view_add_edit_thongtinhoidong_nghiemthu.php";
 				break;
@@ -52,7 +52,7 @@
 					$fk_user_id = $_POST["fk_user_id"];
 					$fk_vaitro_id = $_POST["fk_vaitro_id"];
 					$userRc = $this->model->get_a_record("select * from tbl_user where pk_user_id=$fk_user_id");
-					$this->model->execute("insert into tbl_hoidong_detai set fk_user_id=$fk_user_id, fk_vaitro_id=$fk_vaitro_id, fk_hoidong_id = $fk_hoidong_id, UserType_backup=$userRc->UserType ");
+					$this->model->execute("insert into tbl_hoidong_detai set fk_user_id=$fk_user_id, fk_vaitro_id=$fk_vaitro_id, fk_hoidongnghiemthu_id = $fk_hoidongnghiemthu_id, UserType_backup=$userRc->UserType ");
 					if($fk_vaitro_id == 1){
 						$this->model->execute("UPDATE `tbl_user` SET `UserType` = '3' WHERE `tbl_user`.`pk_user_id` = $fk_user_id ");
 					}

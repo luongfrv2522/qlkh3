@@ -65,8 +65,8 @@
                    
                     <td class=" "><?=++$index?></td>
                     <td class=" " style="font-weight: bold;"><?php echo $rows->c_tenkhoanmuc; ?></td>
-                    <td class=" " style="font-weight: bold;"><?php echo $rows->c_diemtoida; ?></td>
-                    <td class=" " style="font-weight: bold;"><?php echo $rows->c_diemdanhgia; ?></td>
+                    <td class=" " style="font-weight: bold;"></td>
+                    <td class=" " style="font-weight: bold;"></td>
                     <td class=" last">
                       <a href="admin.php?controller=add_edit_khoanmucdiemcon&act=add&id=<?php echo $rows->pk_khoanmucdiem_id; ?>">Add</a>&nbsp;&nbsp;
                     	<a href="admin.php?controller=add_edit_khoanmucdiem&act=edit&id=<?php echo $rows->pk_khoanmucdiem_id; ?>">Edit</a>&nbsp;&nbsp;
@@ -82,8 +82,8 @@
                
                     <td class=" "></td>
                     <td class=" "><?php echo $rows1->c_tenkhoanmuc; ?></td>
-                    <td class=" "><?php echo $rows1->c_diemtoida; ?></td>
-                    <td class=" "><?php echo $rows1->c_diemdanhgia; ?></td>
+                    <td class=" "></td>
+                    <td class=" "></td>
                     <td class=" last">
                       <a href="admin.php?controller=add_edit_khoanmucdiem&act=edit&id=<?php echo $rows1->pk_khoanmucdiem_id; ?>"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -99,10 +99,10 @@
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" style="margin-left: 105px;">Tổng 
                         </label>
                         <div class="col-md-1 col-sm-1 col-xs-12" style="margin-left: 400px;">
-                          <input type="" name="" class="form-control col-md-4 col-xs-12" readonly="" value="<?=$tongdiem?>">  
+                          <input type="" name="" class="form-control col-md-4 col-xs-12" readonly="" >  
                         </div>
                         <div class="col-md-1 col-sm-1 col-xs-12" style="margin-left: 30px;">
-                          <input value="<?=$tongdanhgia?>" type="" name="" class="form-control col-md-4 col-xs-12" readonly="">  
+                          <input  type="" name="" class="form-control col-md-4 col-xs-12" readonly="">  
                         </div>
                       </div>
             

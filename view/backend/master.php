@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="public/backend/ckeditor5-build-classic/ckeditor.js"></script>
+    <script type="text/javascript" src="public/backend/ckeditor/cheditor.js"></script>
 
     <link rel="icon" href="view/backend/images/favicon.ico" type="image/ico" />
 

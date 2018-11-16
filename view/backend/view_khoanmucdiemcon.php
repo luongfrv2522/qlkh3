@@ -58,8 +58,8 @@
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
                     <td class=" " style="font-weight: bold;"><?php echo $rows->c_tenkhoanmuc; ?></td>
-                    <td class=" " style="font-weight: bold;"><?php echo $rows->c_diemtoida; ?></td>
-                    <td class=" " style="font-weight: bold;"><?php echo $rows->c_diemdanhgia; ?></td>
+                    <td class=" " style="font-weight: bold;"></td>
+                    <td class=" " style="font-weight: bold;"></td>
                     <td class=" last">
                   
                     	<a href="admin.php?controller=add_edit_khoanmucdiemcon&act=edit&id=<?php echo $rows->pk_khoanmucdiem_id; ?>">Edit</a>&nbsp;&nbsp;

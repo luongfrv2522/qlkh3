@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 13, 2018 lúc 05:37 PM
+-- Thời gian đã tạo: Th10 16, 2018 lúc 05:48 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 7.2.1
 
@@ -42,7 +42,7 @@ CREATE TABLE `tbl_bomon` (
 INSERT INTO `tbl_bomon` (`pk_mabomon_id`, `c_tenbomon`, `c_truongbomon`, `fk_user_id`) VALUES
 (57, 'Ngôn ngữ Anh', 'Nguyễn Văn B', 0),
 (58, 'Ngôn ngữ Nhật', 'Nguyễn Văn C', 0),
-(59, 'Bộ môn Toán', 'Nguyễn Văn D', 0),
+(59, 'Bộ môn Toán', 'Ngô Thanh Nga', 86),
 (61, 'Bộ môn Tin', 'Nguyễn Văn A', 77),
 (63, 'Kinh tế quản lý', 'Ngô Thanh Tâm', 76),
 (64, 'None', 'None', 0);
@@ -101,7 +101,21 @@ INSERT INTO `tbl_detai` (`pk_madetai_id`, `fk_user_id`, `fk_user_hoi_dong`, `c_t
 (45, 80, 0, 'đề tài 6666', 'đề tài 6666', 1000000000, '2018-10-04', '2018-10-20', 0, 'src/image/test.xlsx'),
 (46, 78, 0, 'đề tài 3333', 'đề tài 3333', 1000000000, '2018-10-11', '2018-10-26', 1, 'src/image/test.zip'),
 (47, 78, 0, 'đề tài 1', 'đề tài 1', 1000000000, '2018-10-04', '2018-10-20', 2, 'src/image/test.xlsx'),
-(48, 78, 0, 'tt', 'rrrr', 1000000000, '2018-11-16', '2018-11-24', 0, 'src/image/test.xlsx');
+(48, 78, 0, 'tt', 'rrrr', 1000000000, '2018-11-16', '2018-11-24', 0, 'src/image/test.xlsx'),
+(49, 78, 0, 'xây dựng hệ thống nhân sự', 'phát triển phần mềm quản lý nhân sự', 1000000000, '2018-11-14', '2019-11-14', 1, 'src/image/test.xlsx');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_detai_phieucham`
+--
+
+CREATE TABLE `tbl_detai_phieucham` (
+  `fk_madetai_id` int(11) NOT NULL,
+  `fk_khoanmucdiem_id` int(11) NOT NULL,
+  `diemToiDa` int(11) NOT NULL,
+  `diemDanhGia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -143,7 +157,9 @@ INSERT INTO `tbl_detai_user` (`fk_madetai_id`, `fk_user_id`) VALUES
 (46, 78),
 (47, 78),
 (47, 79),
-(48, 79);
+(48, 79),
+(49, 82),
+(49, 87);
 
 -- --------------------------------------------------------
 
@@ -190,7 +206,8 @@ CREATE TABLE `tbl_hoidong` (
 
 INSERT INTO `tbl_hoidong` (`pk_hoidong_id`, `c_tenhoidong`, `fk_madetai_id`) VALUES
 (8, 'Hội đồng 123', 46),
-(9, 'Hội đồng 14', 44);
+(9, 'Hội đồng duyệt đề tài 7777', 44),
+(10, 'Hội đồng duyệt đề tài quản lý nhân sự', 49);
 
 -- --------------------------------------------------------
 
@@ -209,8 +226,7 @@ CREATE TABLE `tbl_hoidongnghiemthu` (
 --
 
 INSERT INTO `tbl_hoidongnghiemthu` (`pk_hoidongnghiemthu_id`, `c_tenhoidong`, `fk_madetai_id`) VALUES
-(1, 'Hội đồng 141', 42),
-(2, 'Hội đồng 15', 47);
+(3, 'Hội đồng 1', 41);
 
 -- --------------------------------------------------------
 
@@ -238,13 +254,33 @@ INSERT INTO `tbl_hoidong_detai` (`pk_hoidong_id`, `fk_nam_id`, `fk_vaitro_id`, `
 (5, 0, 3, 69, 1, 0, 0),
 (8, 0, 3, 79, 1, 0, 0),
 (9, 0, 3, 80, 2, 0, 0),
-(10, 0, 2, 79, 2, 0, 0),
 (11, 0, 1, 78, 2, 0, 0),
 (12, 0, 1, 80, 3, 4, 0),
 (13, 0, 3, 77, 2, 2, 0),
 (14, 0, 3, 80, 3, 3, 0),
 (18, 0, 3, 80, 3, 1, 0),
-(21, 0, 1, 79, 3, 9, 0);
+(19, 0, 3, 83, 1, 9, 0),
+(20, 0, 2, 82, 1, 9, 0),
+(21, 0, 1, 79, 1, 9, 0),
+(22, 0, 3, 83, 1, 2, 0),
+(23, 0, 3, 87, 1, 2, 0),
+(24, 0, 3, 87, 1, 2, 0),
+(25, 0, 3, 88, 1, 1, 0),
+(26, 0, 3, 87, 1, 2, 0),
+(27, 0, 3, 87, 1, 2, 0),
+(28, 0, 3, 87, 1, 2, 0),
+(29, 0, 3, 87, 1, 2, 0),
+(30, 0, 3, 87, 1, 0, 2),
+(31, 0, 2, 83, 1, 0, 2),
+(32, 0, 3, 88, 1, 0, 1),
+(33, 0, 1, 83, 1, 0, 2),
+(34, 0, 1, 85, 1, 0, 1),
+(35, 0, 1, 83, 3, 8, 0),
+(36, 0, 3, 87, 1, 10, 0),
+(37, 0, 1, 83, 3, 10, 0),
+(38, 0, 2, 79, 3, 10, 0),
+(39, 0, 3, 87, 1, 0, 3),
+(40, 0, 3, 83, 3, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -253,12 +289,11 @@ INSERT INTO `tbl_hoidong_detai` (`pk_hoidong_id`, `fk_nam_id`, `fk_vaitro_id`, `
 --
 
 CREATE TABLE `tbl_lichbaove` (
-  `pk_malichbaove_id` int(11) NOT NULL,
+  `pk_lichbaove_id` int(11) NOT NULL,
   `fk_madetai_id` int(11) NOT NULL,
-  `fk_magiaovien_id` int(11) NOT NULL,
-  `c_noidungbaove` varchar(1000) NOT NULL,
-  `fk_mahoidong_id` int(11) NOT NULL,
-  `c_ngaybaove` date NOT NULL
+  `c_diadiem` varchar(1000) NOT NULL,
+  `c_ngay` date NOT NULL,
+  `c_thoigian` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -490,11 +525,14 @@ CREATE TABLE `tbl_phieucham` (
 INSERT INTO `tbl_phieucham` (`pk_khoanmucdiem_id`, `parentId`, `c_tenkhoanmuc`, `c_diemtoida`, `c_diemdanhgia`) VALUES
 (2, 0, 'Mức độ hoàn thành so với đăng kí trong Thuyết minh đề tài', 80, 60),
 (3, 0, 'Các kết quả vượt trội (chọn 1 trong 2 tiêu chí)', 15, 10),
-(4, 0, 'Chất lượng báo cáo tổng kết và báo cáo tóm tắt đề tài', 5, 3),
-(5, 2, 'con 1', 50, 10),
 (6, 3, 'con 1 của 2', 10, 1),
-(7, 2, 'mục 1', 6, 5),
-(9, 3, 'mục 1', 5, 4);
+(9, 3, 'mục 1', 5, 4),
+(11, 2, 'mục 1', 3, 4),
+(12, 2, 'dd', 3, 4),
+(13, 0, 'Chất lượng báo cáo tổng kết và báo cáo tóm tắt đề tài', 4, 5),
+(14, 13, 'mục 3', 3, 4),
+(15, 0, 'mục 1', 3, 4),
+(16, 2, 'con 1gg', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -547,7 +585,8 @@ INSERT INTO `tbl_tiendo` (`pk_tiendo_id`, `fk_madetai_id`, `fk_user_id`, `fk_mab
 (4, 41, 0, 0, '2018-11-15', '2018-11-22', 'xây dựng modull quản lý', '80%', ''),
 (5, 41, 0, 0, '2018-11-23', '2018-11-23', 'xây dựng modull quản lý', '80%', ''),
 (6, 42, 0, 0, '2018-11-15', '2018-11-15', 'xây dựng modull quản lý', '80%', ''),
-(7, 47, 0, 0, '2018-11-16', '2018-11-23', 'xây dựng modull quản lý', '80%', '');
+(7, 47, 0, 0, '2018-11-16', '2018-11-23', 'xây dựng modull quản lý', '80%', ''),
+(8, 47, 0, 0, '2018-11-09', '2018-11-04', 'xây dựng modull quản lý', '80%', '');
 
 -- --------------------------------------------------------
 
@@ -574,13 +613,21 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`pk_user_id`, `c_fullname`, `fk_mabomon_id`, `c_hocham`, `c_hocvi`, `c_ngaysinh`, `c_diachi`, `c_sdt`, `c_email`, `c_password`, `UserType`) VALUES
-(20, 'Nguyễn Văn C', 61, 'không', 'không', '1990-10-18', 'Hà Nội', 168464784, 'hoidong1@gmail.com', '202cb962ac59075b964b07152d234b70', 3),
+(20, 'Nguyễn Văn C', 64, 'không', 'không', '1990-10-18', 'Hà Nội', 168464784, 'hoidong1@gmail.com', '202cb962ac59075b964b07152d234b70', 3),
 (76, 'Ngô Thanh Tâm', 63, 'không', 'Tiến sĩ', '2018-10-12', 'Hà nội', 985698736, 'truongbomonkt@gmail.com', '202cb962ac59075b964b07152d234b70', 2),
 (77, 'Nguyễn Văn A', 61, 'không', 'Tiến sĩ', '2018-10-14', 'Hà nội', 985698736, 'truongbomontin@gmail.com', '202cb962ac59075b964b07152d234b70', 2),
 (78, 'Ngô Thị Thắm', 61, 'không', 'Tiến sĩ', '2018-10-12', 'Hà nội', 985698736, 'giaovientin@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
-(79, 'Vũ Thị Hoa', 61, 'không', 'Tiến sĩ', '2018-10-14', 'Hà nội', 985698736, 'giaovientin1@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
+(79, 'Vũ Thị Hoa', 61, 'không', 'Tiến sĩ', '2018-10-14', 'Hà nội', 985698736, 'giaovientin1@gmail.com', '202cb962ac59075b964b07152d234b70', 3),
 (80, 'Đỗ Ngọc Mai', 63, 'không', 'Tiến sĩ', '2018-10-05', 'Hà nội', 985698736, 'giaovienkt@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
-(81, 'Nguyễn Minh Hòa', 64, 'không', 'Tiến sĩ', '2018-11-16', 'Hà nội', 985698736, 'admin@mail.com', '202cb962ac59075b964b07152d234b70', 0);
+(81, 'Nguyễn Minh Hòa', 64, 'không', 'Tiến sĩ', '2018-11-16', 'Hà nội', 985698736, 'admin@mail.com', '202cb962ac59075b964b07152d234b70', 0),
+(82, 'Trần Văn Đức', 61, 'không', 'Tiến sĩ', '2018-10-31', 'Hà nội', 985698736, 'giaovientin2@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
+(83, 'Nguyễn Văn Tiến', 61, 'không', 'Tiến sĩ', '2018-11-16', 'Hà nội', 985698736, 'giaovientin3@gmail.com', '202cb962ac59075b964b07152d234b70', 3),
+(84, 'Đỗ Thị Thu Hiền', 63, 'không', 'Tiến sĩ', '2018-11-17', 'Hà nội', 985698736, 'giaovienkt1@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
+(85, 'Đỗ Thị Huế', 63, 'không', 'Tiến sĩ', '2018-11-10', 'Hà nội', 985698736, 'giaovienkt2@gmail.com', '202cb962ac59075b964b07152d234b70', 3),
+(86, 'Ngô Thanh Nga', 59, 'không', 'Tiến sĩ', '2018-11-02', 'Hà nội', 985698736, 'truongbomontoan@gmail.com', '202cb962ac59075b964b07152d234b70', 2),
+(87, 'Đào Quang Vinh', 61, 'không', 'Tiến sĩ', '2018-11-03', 'Hà nội', 985698736, 'giaovientin4@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
+(88, 'Đào Quang Hưng', 63, 'không', 'Tiến sĩ', '2018-11-23', 'Hà nội', 985698736, 'giaovienkt3@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
+(89, 'Nguyễn Thu Trang', 59, 'không', 'Tiến sĩ', '2018-11-23', 'Hà nội', 985698736, 'giaovientoan@gmail.com', '202cb962ac59075b964b07152d234b70', 1);
 
 -- --------------------------------------------------------
 
@@ -600,7 +647,7 @@ CREATE TABLE `tbl_vaitro` (
 INSERT INTO `tbl_vaitro` (`pk_vaitro_id`, `c_vaitro`) VALUES
 (1, 'Thư ký'),
 (2, 'Chủ tịch'),
-(3, 'Hội đồng phản biện');
+(3, 'Phản biện');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -652,7 +699,7 @@ ALTER TABLE `tbl_hoidong_detai`
 -- Chỉ mục cho bảng `tbl_lichbaove`
 --
 ALTER TABLE `tbl_lichbaove`
-  ADD PRIMARY KEY (`pk_malichbaove_id`);
+  ADD PRIMARY KEY (`pk_lichbaove_id`);
 
 --
 -- Chỉ mục cho bảng `tbl_nam`
@@ -716,7 +763,7 @@ ALTER TABLE `tbl_category_news`
 -- AUTO_INCREMENT cho bảng `tbl_detai`
 --
 ALTER TABLE `tbl_detai`
-  MODIFY `pk_madetai_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `pk_madetai_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_giaovien`
@@ -728,25 +775,25 @@ ALTER TABLE `tbl_giaovien`
 -- AUTO_INCREMENT cho bảng `tbl_hoidong`
 --
 ALTER TABLE `tbl_hoidong`
-  MODIFY `pk_hoidong_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pk_hoidong_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_hoidongnghiemthu`
 --
 ALTER TABLE `tbl_hoidongnghiemthu`
-  MODIFY `pk_hoidongnghiemthu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pk_hoidongnghiemthu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_hoidong_detai`
 --
 ALTER TABLE `tbl_hoidong_detai`
-  MODIFY `pk_hoidong_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `pk_hoidong_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_lichbaove`
 --
 ALTER TABLE `tbl_lichbaove`
-  MODIFY `pk_malichbaove_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pk_lichbaove_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_nam`
@@ -764,7 +811,7 @@ ALTER TABLE `tbl_news`
 -- AUTO_INCREMENT cho bảng `tbl_phieucham`
 --
 ALTER TABLE `tbl_phieucham`
-  MODIFY `pk_khoanmucdiem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pk_khoanmucdiem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_slide`
@@ -776,13 +823,13 @@ ALTER TABLE `tbl_slide`
 -- AUTO_INCREMENT cho bảng `tbl_tiendo`
 --
 ALTER TABLE `tbl_tiendo`
-  MODIFY `pk_tiendo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `pk_tiendo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `pk_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `pk_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_vaitro`
