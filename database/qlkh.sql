@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 16, 2018 lúc 05:48 PM
+-- Thời gian đã tạo: Th10 17, 2018 lúc 05:48 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 7.2.1
 
@@ -164,6 +164,23 @@ INSERT INTO `tbl_detai_user` (`fk_madetai_id`, `fk_user_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_diem_phieucham`
+--
+
+CREATE TABLE `tbl_diem_phieucham` (
+  `PointId` int(11) NOT NULL,
+  `fk_user_id` int(11) NOT NULL,
+  `fk_khoanmucdiem_id` int(11) NOT NULL,
+  `diem_chu_tich` float NOT NULL,
+  `diem_phan_bien_1` float NOT NULL,
+  `diem_phan_bien_2` float NOT NULL,
+  `ghi_chu` text NOT NULL,
+  `xep_loai` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_giaovien`
 --
 
@@ -259,9 +276,6 @@ INSERT INTO `tbl_hoidong_detai` (`pk_hoidong_id`, `fk_nam_id`, `fk_vaitro_id`, `
 (13, 0, 3, 77, 2, 2, 0),
 (14, 0, 3, 80, 3, 3, 0),
 (18, 0, 3, 80, 3, 1, 0),
-(19, 0, 3, 83, 1, 9, 0),
-(20, 0, 2, 82, 1, 9, 0),
-(21, 0, 1, 79, 1, 9, 0),
 (22, 0, 3, 83, 1, 2, 0),
 (23, 0, 3, 87, 1, 2, 0),
 (24, 0, 3, 87, 1, 2, 0),
@@ -276,11 +290,9 @@ INSERT INTO `tbl_hoidong_detai` (`pk_hoidong_id`, `fk_nam_id`, `fk_vaitro_id`, `
 (33, 0, 1, 83, 1, 0, 2),
 (34, 0, 1, 85, 1, 0, 1),
 (35, 0, 1, 83, 3, 8, 0),
-(36, 0, 3, 87, 1, 10, 0),
-(37, 0, 1, 83, 3, 10, 0),
-(38, 0, 2, 79, 3, 10, 0),
 (39, 0, 3, 87, 1, 0, 3),
-(40, 0, 3, 83, 3, 0, 3);
+(40, 0, 3, 83, 3, 0, 3),
+(42, 0, 3, 87, 1, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -617,7 +629,7 @@ INSERT INTO `tbl_user` (`pk_user_id`, `c_fullname`, `fk_mabomon_id`, `c_hocham`,
 (76, 'Ngô Thanh Tâm', 63, 'không', 'Tiến sĩ', '2018-10-12', 'Hà nội', 985698736, 'truongbomonkt@gmail.com', '202cb962ac59075b964b07152d234b70', 2),
 (77, 'Nguyễn Văn A', 61, 'không', 'Tiến sĩ', '2018-10-14', 'Hà nội', 985698736, 'truongbomontin@gmail.com', '202cb962ac59075b964b07152d234b70', 2),
 (78, 'Ngô Thị Thắm', 61, 'không', 'Tiến sĩ', '2018-10-12', 'Hà nội', 985698736, 'giaovientin@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
-(79, 'Vũ Thị Hoa', 61, 'không', 'Tiến sĩ', '2018-10-14', 'Hà nội', 985698736, 'giaovientin1@gmail.com', '202cb962ac59075b964b07152d234b70', 3),
+(79, 'Vũ Thị Hoa', 61, 'không', 'Tiến sĩ', '2018-10-14', 'Hà nội', 985698736, 'giaovientin1@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
 (80, 'Đỗ Ngọc Mai', 63, 'không', 'Tiến sĩ', '2018-10-05', 'Hà nội', 985698736, 'giaovienkt@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
 (81, 'Nguyễn Minh Hòa', 64, 'không', 'Tiến sĩ', '2018-11-16', 'Hà nội', 985698736, 'admin@mail.com', '202cb962ac59075b964b07152d234b70', 0),
 (82, 'Trần Văn Đức', 61, 'không', 'Tiến sĩ', '2018-10-31', 'Hà nội', 985698736, 'giaovientin2@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
@@ -670,6 +682,12 @@ ALTER TABLE `tbl_category_news`
 --
 ALTER TABLE `tbl_detai`
   ADD PRIMARY KEY (`pk_madetai_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_diem_phieucham`
+--
+ALTER TABLE `tbl_diem_phieucham`
+  ADD PRIMARY KEY (`PointId`);
 
 --
 -- Chỉ mục cho bảng `tbl_giaovien`
@@ -766,6 +784,12 @@ ALTER TABLE `tbl_detai`
   MODIFY `pk_madetai_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_diem_phieucham`
+--
+ALTER TABLE `tbl_diem_phieucham`
+  MODIFY `PointId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_giaovien`
 --
 ALTER TABLE `tbl_giaovien`
@@ -787,7 +811,7 @@ ALTER TABLE `tbl_hoidongnghiemthu`
 -- AUTO_INCREMENT cho bảng `tbl_hoidong_detai`
 --
 ALTER TABLE `tbl_hoidong_detai`
-  MODIFY `pk_hoidong_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `pk_hoidong_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_lichbaove`

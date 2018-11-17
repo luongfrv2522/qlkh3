@@ -83,13 +83,30 @@
                     <th class="column-title">STT </th>
                     <th class="column-title">Nội dung đánh giá </th>
                     <th class="column-title">Điểm tối đa </th>
-                    <th class="column-title">Điểm đánh giá </th>
-               
+                    <th class="column-title" >Điểm đánh giá </th>
+                    <th class="column-title" >Điểm đánh giá </th>
+                    <th class="column-title" >Điểm đánh giá </th>
                     
+                    
+               
+                 
                     <th class="bulk-actions" colspan="7">
                       <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                     </th>
                   </tr>
+
+                   <tr class="headings">
+                      <td class="a-center ">
+                        <input type="checkbox" class="flat" name="table_records">
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Chủ tịch</td>
+                      <td>Phản biện 1</td>
+                      <td>Phản biện 2</td>
+                    </tr>
+
                 </thead>
                 <tbody>
                   <?php $tongdiem=0;$tongdanhgia=0; $index=0;?>
@@ -98,13 +115,19 @@
                       if($rows->c_diemtoida>0) $tongdiem+=$rows->c_diemtoida;
                       if($rows->c_diemdanhgia>0) $tongdanhgia+=$rows->c_diemdanhgia;
                    ?>
+
+                   
+
                   <tr class="even pointer">
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
                    
+                   
                     <td class=" "><?=++$index?></td>
                     <td class=" " style="font-weight: bold;"><?php echo $rows->c_tenkhoanmuc; ?></td>
+                    <td class=" " style="font-weight: bold;"></td>
+                    <td class=" " style="font-weight: bold;"></td>
                     <td class=" " style="font-weight: bold;"></td>
                     <td class=" " style="font-weight: bold;"></td>
                    
@@ -118,6 +141,8 @@
                
                     <td class=" "></td>
                     <td class=" "><?php echo $rows1->c_tenkhoanmuc; ?></td>
+                    <td class=" "></td>
+                    <td class=" "></td>
                     <td class=" "></td>
                     <td class=" "></td>
                   

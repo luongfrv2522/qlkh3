@@ -25,6 +25,20 @@
                     <br />
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Bộ môn</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <select name="fk_mabomon_id" class="form-control col-md-7 col-xs-12">
+                            <?php 
+                              $bomon = $this->model->get_all("select * from tbl_bomon order by pk_mabomon_id desc");
+                              foreach($bomon as $rows):
+                             ?>
+                            <option <?php if(isset($_GET['fk_mabomon_id']) && $_GET['fk_mabomon_id'] ==$rows->pk_mabomon_id){echo 'selected';} elseif(isset($record->fk_mabomon_id)&&$record->fk_mabomon_id==$rows->pk_mabomon_id){echo 'selected';}  ?> value="<?php echo $rows->pk_mabomon_id; ?>"><?php echo $rows->c_tenbomon; ?></option>
+                            <?php endforeach; ?>
+                          </select>
+                        </div>
+                      </div>
+
                       <?php $id_detai = $_SESSION['ID_DETAI']; $id_detai==null || $id_detai==''?$id_detai=0:''; ?>
                       <div class="form-group"> 
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Thành viên</label>
