@@ -113,12 +113,11 @@
                 <?php foreach($arr as $rows): ?>
                   <?php 
                       if($rows->c_diemtoida>0) $tongdiem+=$rows->c_diemtoida;
-                      if($rows->c_diemdanhgia>0) $tongdanhgia+=$rows->c_diemdanhgia;
                    ?>
 
                    
 
-                  <tr class="even pointer">
+                  <tr class="even pointer linePoint">
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
@@ -126,25 +125,25 @@
                    
                     <td class=" "><?=++$index?></td>
                     <td class=" " style="font-weight: bold;"><?php echo $rows->c_tenkhoanmuc; ?></td>
-                    <td class=" " style="font-weight: bold;"></td>
-                    <td class=" " style="font-weight: bold;"></td>
-                    <td class=" " style="font-weight: bold;"></td>
-                    <td class=" " style="font-weight: bold;"></td>
+                    <td class=" " style="font-weight: bold;"><?=$rows->c_diemtoida?></td>
+                    <td class=" " style="font-weight: bold;"><input type="text" class="diem_chu_tich" value="<?=$rows->pk_khoanmucdiem_id?>"></td>
+                    <td class=" " style="font-weight: bold;"><input type="text" class="diem_phan_bien_1" value="<?=$rows->pk_khoanmucdiem_id?>"></td>
+                    <td class=" " style="font-weight: bold;"><input type="text" class="diem_phan_bien_2" value="<?=$rows->pk_khoanmucdiem_id?>"></td>
                    
                   </tr>
                   <?php $arr1= $this->model->get_all("select * from tbl_phieucham where parentId={$rows->pk_khoanmucdiem_id} order by pk_khoanmucdiem_id  limit $from,$record_per_page");?>
                   <?php foreach($arr1 as $rows1): ?>
-                  <tr class="even pointer">
+                  <tr class="even pointer linePoint">
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
                
                     <td class=" "></td>
                     <td class=" "><?php echo $rows1->c_tenkhoanmuc; ?></td>
-                    <td class=" "></td>
-                    <td class=" "></td>
-                    <td class=" "></td>
-                    <td class=" "></td>
+                    <td class=" "><?=$rows1->c_diemtoida?></td>
+                    <td class=" "><input type="text" class="diem_chu_tich" value="<?=$rows1->pk_khoanmucdiem_id?>"></td>
+                    <td class=" "><input type="text" class="diem_phan_bien_1" value="<?=$rows1->pk_khoanmucdiem_id?>"></td>
+                    <td class=" "><input type="text" class="diem_phan_bien_2" value="<?=$rows1->pk_khoanmucdiem_id?>"></td>
                   
                   </tr>
                 <?php endforeach; ?>
@@ -158,13 +157,13 @@
                      <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ý kiến và kiến nghị khác 
                     </label>
                     <div class="col-md-5 col-sm-5 col-xs-12">
-                      <textarea class="form-control" rows="2"></textarea>
+                      <textarea class="form-control" rows="2" id="yKien">Ý kiến</textarea>
                     </div>
                    
                     <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ghi chú 
                     </label>
                     <div class="col-md-5 col-sm-5 col-xs-12">
-                      <textarea class="form-control" rows="2"></textarea>
+                      <textarea class="form-control" rows="2" id="ghiChu">Ghi chú</textarea>
                     </div>
 
                   </div>
@@ -173,7 +172,7 @@
                       <label class="control-label col-md-1 col-sm-1 col-xs-12" >Xếp loại <span class="required">*</span>
                       </label>
                       <div class="col-md-5 col-sm-5 col-xs-12">
-                        <input class="form-control col-md-7 col-xs-12"> 
+                        <input class="form-control col-md-7 col-xs-12" id="xepLoai" readonly="readonly"> 
                       </div>
                   </div>
 
@@ -182,7 +181,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button class="btn btn-primary" type="button"><a href="hoidong.php?controller=phieuchamdetai" style="color: white;">Cancel</a></button>
                           <button class="btn btn-primary" type="reset" value="Reset">Reset</button>
-                          <button type="submit" value="Process" class="btn btn-success">Submit</button>
+                          <button onclick="submitForm();" type="submit" value="Process" class="btn btn-success">Submit</button>
                         </div>
                       </div>
             </form>
@@ -203,3 +202,27 @@
   </div>
 </div>
 <!-- /page content -->
+<script type="text/javascript">
+  function submitForm() {
+    var listPoint = [];
+    $('.linePoint').each(function(){
+      let diem_chu_tich = $(this).find('.diem_chu_tich').val();
+      let diem_phan_bien_1 = $(this).find('.diem_phan_bien_1').val();
+      let diem_phan_bien_2 = $(this).find('.diem_phan_bien_2').val();
+
+      var item = {
+        diem_chu_tich : diem_chu_tich?diem_chu_tich:0,
+        diem_phan_bien_1 : diem_phan_bien_1?diem_phan_bien_1:0,
+        diem_phan_bien_2 : diem_phan_bien_2?diem_phan_bien_2:0
+      };
+      listPoint.push(item);
+    });
+    var objReturn = {
+      ghiChu : $('#ghiChu').val(),
+      yKien : $('#yKien').val(),
+      listPoint : listPoint
+    }
+    console.log(objReturn);
+  }
+  
+</script>
