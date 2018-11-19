@@ -1,4 +1,8 @@
-  
+  <?php 
+  	if(isset($_GET['action']) && $_GET['action']=='test'){
+  		print_r($_POST);
+  	}
+  ?>
  <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -85,7 +89,7 @@
                                     </tr>
                                   </thead>
                                     <tbody>
-                                       <tr class="even pointer linePoint">
+                                       <tr class="even pointer">
                                           <td class=" ">2</td>
                                           <td class=" ">3</td>      
                                         </tr>
@@ -169,7 +173,8 @@
               </table>
  
             </div>
-             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
+             <!-- <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>"> -->
+             	<div class="form-horizontal form-label-left">
                  <div class="form-group">
                      <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ý kiến 
                     </label>
@@ -197,10 +202,10 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button class="btn btn-primary" type="button"><a href="hoidong.php?controller=phieuchamdetai" style="color: white;">Cancel</a></button>
                           <button class="btn btn-primary" type="reset" value="Reset">Reset</button>
-                          <button onclick="submitForm();" type="submit" value="Process" class="btn btn-success">Submit</button>
+                          <button onclick="submitForm(this);" type="" value="Process" class="btn btn-success">Submit</button>
                         </div>
                       </div>
-            </form>
+            </div>
 
 
 
@@ -219,8 +224,34 @@
 </div>
 <!-- /page content -->
 <script type="text/javascript">
-  fk_user_idnction submitForm() {
-    
+  /*`$(function(){
+  	$('#demo-form2').submit(function(e){
+  		e.preventDefault();
+  		debugger
+  		 var listPoint = [];
+	    $('.linePoint').each(function(){
+	      let diem_chu_tich = $(this).find('.diem_chu_tich').val();
+	      let diem_phan_bien_1 = $(this).find('.diem_phan_bien_1').val();
+	      let diem_phan_bien_2 = $(this).find('.diem_phan_bien_2').val();
+	      let pk_khoanmucdiem_id = $(this).find('.pk_khoanmucdiem_id').val();
+	      var item = {
+	        pk_khoanmucdiem_id: pk_khoanmucdiem_id?pk_khoanmucdiem_id:0,
+	        diem_chu_tich : diem_chu_tich?diem_chu_tich:0,
+	        diem_phan_bien_1 : diem_phan_bien_1?diem_phan_bien_1:0,
+	        diem_phan_bien_2 : diem_phan_bien_2?diem_phan_bien_2:0
+	      };
+	      listPoint.push(item);
+	    });
+	    var objReturn = {
+	      ghiChu : $('#ghiChu').val(),
+	      yKien : $('#yKien').val(),
+	      listPoint : listPoint
+	    }
+	    console.log(objReturn);
+  	});
+  });*/
+  function submitForm(){
+    debugger
     var listPoint = [];
     $('.linePoint').each(function(){
       let diem_chu_tich = $(this).find('.diem_chu_tich').val();
@@ -241,6 +272,16 @@
       listPoint : listPoint
     }
     console.log(objReturn);
+    $.ajax({
+        url: "controller/backend/w_hoidong/controller_add_diem_phieucham.php",
+        type: "post",
+        contentType : 'application/json; charset=utf-8',
+        dataType: "json",
+        data: JSON.stringify(objReturn),
+        success: function(data){
+        	debugger
+        	console.log(data);
+        }
+    });
   }
-  
 </script>
