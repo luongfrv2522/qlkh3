@@ -29,6 +29,20 @@
                         $arrDt = $this->model->get_all('select * from tbl_detai dt join tbl_user u on dt.fk_user_id = u.pk_user_id join tbl_bomon bm on bm.pk_mabomon_id = u.fk_mabomon_id join tbl_hoidong hd on hd.fk_madetai_id = dt.pk_madetai_id where dt.c_trangthai=2 ');
                       ?>
                        <div class="form-group">
+
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12" >Bộ môn 
+                        </label>
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                          <select name="fk_mabomon_id" class="form-control col-md-7 col-xs-12">
+                            <?php 
+                              $bomon = $this->model->get_all("select * from tbl_bomon order by pk_mabomon_id desc");
+                              foreach($bomon as $rows):
+                             ?>
+                            <option <?php if(isset($record->fk_mabomon_id)&&$record->fk_mabomon_id==$rows->pk_mabomon_id): ?> selected <?php endif; ?> value="<?php echo $rows->pk_mabomon_id; ?>"><?php echo $rows->c_tenbomon; ?></option>
+                            <?php endforeach; ?>
+                          </select>
+                        </div>
+                        
                         <label class="control-label col-md-1 col-sm-1 col-xs-12">Đề tài</label>
                         <div class="col-md-5 col-sm-5 col-xs-12">
                           <select name="fk_madetai_id" class="form-control col-md-7 col-xs-12">
@@ -41,24 +55,20 @@
                           </select>
                         </div>
 
-                        <label class="control-label col-md-1 col-sm-1 col-xs-12" >Bộ môn 
-                        </label>
-                        <div class="col-md-5 col-sm-5 col-xs-12">
-                          <input class="form-control col-md-7 col-xs-12"> 
-                        </div>
+                        
                       </div>
 
                       <div class="form-group">
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ngày họp 
                         </label>
                         <div class="col-md-5 col-sm-5 col-xs-12">
-                          <input class="form-control col-md-7 col-xs-12"> 
+                          <input type="date" name="ngay_hop" value="<?php echo isset($record->ngay_hop)?$record->ngay_hop:""; ?>" required class="form-control col-md-7 col-xs-12"> 
                         </div>
 
                          <label class="control-label col-md-1 col-sm-1 col-xs-12" >Địa điểm 
                         </label>
                         <div class="col-md-5 col-sm-5 col-xs-12">
-                          <input class="form-control col-md-7 col-xs-12"> 
+                          <input type="text" name="dia_diem" value="<?php echo isset($record->dia_diem)?$record->dia_diem:""; ?>" required class="form-control col-md-7 col-xs-12"> 
                         </div>
                       </div>
 
@@ -118,29 +128,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $tongdiem=0;$tongdanhgia=0; $index=0;?>
+                  <?php $tongdiem=0; $index=0;?>
+                  <?php $arr= $this->model->get_all("select * from tbl_phieucham where parentId=0 order by pk_khoanmucdiem_id");?>
                 <?php foreach($arr as $rows): ?>
                   <?php 
                       if($rows->c_diemtoida>0) $tongdiem+=$rows->c_diemtoida;
                    ?>
-
                   <tr class="even pointer linePoint">
-
                     <td class=" "><?=++$index?></td>
                     <td class=" " style="font-weight: bold; width: 250px;"><?php echo $rows->c_tenkhoanmuc; ?></td>
                     <td class=" " style="font-weight: bold;"><?=$rows->c_diemtoida?></td>
-                    <td class=" " style="font-weight: bold;"><input type="text" class="diem_chu_tich" value="<?=$rows->pk_khoanmucdiem_id?>"></td>
-                    <td class=" " style="font-weight: bold;"><input type="text" class="diem_phan_bien_1" value="<?=$rows->pk_khoanmucdiem_id?>"></td>
+                    <td class=" " style="font-weight: bold;">
+                      <input type="text" class="diem_chu_tich" value="<?=$rows->pk_khoanmucdiem_id?>">
+                    </td>
+                    <td class=" " style="font-weight: bold;">
+                      <input type="text" class="diem_phan_bien_1" value="<?=$rows->pk_khoanmucdiem_id?>">
+                    </td>
                     <td class=" " style="font-weight: bold;">
                       <input type="text" class="diem_phan_bien_2" value="<?=$rows->pk_khoanmucdiem_id?>">
                       <input type="text" name="" class="pk_khoanmucdiem_id" value="<?=$rows->pk_khoanmucdiem_id?>" hidden>
                     </td>
                    
                   </tr>
-                  <?php $arr1= $this->model->get_all("select * from tbl_phieucham where parentId={$rows->pk_khoanmucdiem_id} order by pk_khoanmucdiem_id  limit $from,$record_per_page");?>
+                  <?php $arr1= $this->model->get_all("select * from tbl_phieucham where parentId={$rows->pk_khoanmucdiem_id} order by pk_khoanmucdiem_id");?>
                   <?php foreach($arr1 as $rows1): ?>
                   <tr class="even pointer linePoint">
-
                     <td class=" "></td>
                     <td class=" "><?php echo $rows1->c_tenkhoanmuc; ?></td>
                     <td class=" "><?=$rows1->c_diemtoida?></td>
@@ -150,7 +162,6 @@
                       <input type="text" class="diem_phan_bien_2" value="<?=$rows1->pk_khoanmucdiem_id?>">
                       <input type="text" name="" class="pk_khoanmucdiem_id" value="<?=$rows1->pk_khoanmucdiem_id?>" hidden>
                     </td>
-                  
                   </tr>
                 <?php endforeach; ?>
                 <?php endforeach; ?>
@@ -160,18 +171,17 @@
             </div>
              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
                  <div class="form-group">
-                     <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ý kiến và kiến nghị khác 
+                     <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ý kiến 
                     </label>
                     <div class="col-md-5 col-sm-5 col-xs-12">
-                      <textarea class="form-control" rows="2" id="yKien">Ý kiến</textarea>
+                      <input type="text" name="y_kien" value="<?php echo isset($record->y_kien)?$record->y_kien:""; ?>" required class="form-control col-md-7 col-xs-12" id="yKien"> 
                     </div>
                    
                     <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ghi chú 
                     </label>
                     <div class="col-md-5 col-sm-5 col-xs-12">
-                      <textarea class="form-control" rows="2" id="ghiChu">Ghi chú</textarea>
+                      <input type="text" name="ghi_chu" value="<?php echo isset($record->ghi_chu)?$record->ghi_chu:""; ?>" required class="form-control col-md-7 col-xs-12" id="ghiChu"> 
                     </div>
-
                   </div>
 
                    <div class="form-group">
@@ -209,7 +219,8 @@
 </div>
 <!-- /page content -->
 <script type="text/javascript">
-  function submitForm() {
+  fk_user_idnction submitForm() {
+    
     var listPoint = [];
     $('.linePoint').each(function(){
       let diem_chu_tich = $(this).find('.diem_chu_tich').val();

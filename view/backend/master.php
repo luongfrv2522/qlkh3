@@ -66,19 +66,19 @@
                     <ul class="nav child_menu">
                       <li><a href="admin.php?controller=user">Quản lý người dùng</a></li>
                       <li><a href="admin.php?controller=bomon">Quản lý bộ môn</a></li>
-                      <li><a href="admin.php?controller=lichbaove">Quản lý lịch bảo vệ</a></li>
-                     
                       <li><a href="admin.php?controller=news">Quản lý tin tức</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Quản lý hội đồng <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-desktop"></i> Quản lý hội đồng và thời gian<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="admin.php?controller=hoidong">Hội đồng duyệt đề tài</a></li>
-                      <li><a href="admin.php?controller=hoidongnghiemthu">Hội đồng nghiệm thu</a></li>
+                      <li><a href="admin.php?controller=hoidong">Duyệt đề tài</a></li>
+                      <li><a href="admin.php?controller=hoidongnghiemthu">Nghiệm thu đề tài</a></li>
                     </ul>
                   </li>
+
+                 
                   <li><a href="admin.php?controller=khoanmucdiem"><i class="fa fa-table"></i> Phiếu chấm nghiệm thu </a></li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Thống kê - Báo cáo <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Thống kê<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">Chart JS</a></li>
                       <li><a href="#">Chart JS2</a></li>
@@ -138,9 +138,6 @@
       </div>
     </div>
 
-
-
-    
     <!-- Bootstrap -->
     <script src="public/backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

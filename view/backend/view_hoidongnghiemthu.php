@@ -35,31 +35,28 @@
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
                   <tr class="headings">
-                    <th>
-                      <input type="checkbox" id="check-all" class="flat">
-                    </th>
-                    
+                    <th class="column-title">STT </th>
                     <th class="column-title">Tên hội đồng </th>
                     <th class="column-title">Đề tài </th>
                     <th class="column-title">Bộ môn </th>
                     <th class="column-title">Thành viên hội đồng </th>
                     <th class="column-title">Trạng thái </th>
+                    <th class="column-title">Ngày </br>bảo vệ </th>
+                    <th class="column-title">Thời gian </br>bảo vệ </th>
+                    <th class="column-title">Địa điểm </br>bảo vệ </th>
                     
                     <th class="column-title no-link last" ><span class="nobr">Action</span></th>
-                    <th class="bulk-actions" colspan="7">
-                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                    </th>
+                    
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $index=0;?>
                 <?php foreach($arr as $rows): ?>
                   <tr  class="even pointer">
-                    <td class="a-center ">
-                      <input type="checkbox" class="flat" name="table_records">
-                    </td>
                     
-                    <td class=" "><?php echo $rows->c_tenhoidong; ?></td>
-                     <td class=" ">
+                    <td class=" "><?=++$index?></td>
+                    <td class=" " style="width: 120px;"><?php echo $rows->c_tenhoidong; ?></td>
+                     <td class=" " style="width: 120px;">
                       <?php 
                         $detai = $this->model->get_a_record("select c_tendetai from tbl_detai where pk_madetai_id={$rows->fk_madetai_id}");
                         echo isset($detai->c_tendetai)?$detai->c_tendetai:"";
@@ -75,6 +72,15 @@
                     
                     <?php  $thanhvien = $this->model->num_rows("SELECT * FROM `tbl_hoidong_detai` where fk_hoidongnghiemthu_id =".$rows->pk_hoidongnghiemthu_id); ?>
                     <td class=" "><?=(($thanhvien>0)?'Đã lập thành viên':'Chưa lập thành viên')?></td>
+
+                    <td class=" ">
+                      <?php 
+                         $date = date_create($rows->c_ngaybaove);
+                         echo date_format($date,"d/m/Y");     
+                      ?>  
+                    </td>
+                    <td class=" "><?php echo $rows->c_thoigian; ?></td>
+                    <td class=" "><?php echo $rows->c_diadiem; ?></td>
                     
                     <td class=" last">
                     	<a href="admin.php?controller=add_edit_hoidongnghiemthu&act=edit&id=<?php echo $rows->pk_hoidongnghiemthu_id; ?>">Edit</a>&nbsp;&nbsp;

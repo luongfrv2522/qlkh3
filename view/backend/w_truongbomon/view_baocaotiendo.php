@@ -53,10 +53,8 @@
                           <th class="column-title">Tên đề tài </th>
                           <th class="column-title">Chủ nhiệm đề tài </th>
                           <th class="column-title">Bộ môn </th>
-                          <th class="column-title">Thời gian bắt đầu </th>
-                          <th class="column-title">Thời gian kết thúc </th>
-                          <th class="column-title">Nội dung tiến độ </th>
-                          <th class="column-title">Hoàn thành tiến độ(%) </th>
+                          <th class="column-title">Các kết quả đạt được </th>
+                          <th class="column-title">Tiến độ hoàn thành đề tài </th>
                           <th class="column-title">Ghi chú </th> 
                         </tr>
                       </thead>
@@ -77,29 +75,14 @@
                            <td class=" ">
                             <?=$rows->c_fullname?>
                           </td>
-
                           <td class=" ">
                             <?php 
                               $bomon = $this->model->get_a_record("select c_tenbomon from tbl_bomon where pk_mabomon_id={$rows->fk_mabomon_id}");
                               echo isset($bomon->c_tenbomon)?$bomon->c_tenbomon:"";
                             ?>
                           </td>
-
-                          <td class=" ">
-                            <?php 
-                              $date = date_create($rows->c_tungay);
-                              echo date_format($date,"d/m/Y");      
-                            ?>  
-                          </td>
-                          <td class=" ">
-                            <?php 
-                              $date = date_create($rows->c_denngay);
-                              echo date_format($date,"d/m/Y");      
-                            ?>  
-                          </td>
-
                           <td class=" "><?php echo $rows->c_noidungtiendo; ?></td>
-                          <td class=" "><?php echo $rows->c_hoanthanhtiendo; ?></td>
+                          <td class=" "><?php echo $rows->c_hoanthanhtiendo; ?>%</td>
                           <td class=" "><?php echo $rows->c_ghichu; ?></td>
                         </tr>
                       <?php endforeach; ?>

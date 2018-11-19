@@ -25,7 +25,7 @@
         <div class="x_panel">
           <div class="x_title">
             <div>
-				<a href="admin.php?controller=add_edit_lichbaove&act=add" class="btn btn-primary">Add</a>
+				<a href="admin.php?controller=add_edit_lichbaoveduyetdetai&act=add" class="btn btn-primary">Add</a>
 			</div>
             <div class="clearfix"></div>
           </div>
@@ -38,9 +38,12 @@
                     <th>
                       <input type="checkbox" id="check-all" class="flat">
                     </th>
-                    <th class="column-title">Tên bộ môn </th>
-                    <th class="column-title">Trưởng bộ môn </th>
-                    <th class="column-title">UserID </th>
+                    <th class="column-title">Đề tài </th>
+                    <th class="column-title">Bộ môn </th>
+                    <th class="column-title">Hội đồng </th>
+                    <th class="column-title">Ngày bảo vệ </th>
+                    <th class="column-title">Thời gian bảo vệ </th>
+                    <th class="column-title">Địa điểm bảo vệ </th>
                
                     <th class="column-title no-link last" ><span class="nobr">Action</span>
                     </th>
@@ -55,8 +58,8 @@
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
+                    <td class=" "><?php echo $rows->c_tendetai; ?></td>
                     <td class=" "><?php echo $rows->c_tenbomon; ?></td>
-                    <td class=" "><?php echo $rows->c_truongbomon; ?></td>
                     <td class=" "><?php echo $rows->fk_user_id; ?></td>
                     <td class=" last">
                     	<a href="admin.php?controller=add_edit_bomon&act=edit&id=<?php echo $rows->pk_mabomon_id; ?>">Edit</a>&nbsp;&nbsp;

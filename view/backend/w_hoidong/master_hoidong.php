@@ -52,20 +52,14 @@
                 <ul class="nav side-menu">
                   <li><a href="#"><i class="fa fa-home"></i> Home </a></li>
 
-                  <li><a><i class="fa fa-desktop"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="hoidong.php?controller=lichbaove">Xem lịch bảo vệ</a></li>
-                      <li><a href="hoidong.php?controller=hoidong">Xem hội đồng</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a href="hoidong.php?controller=detaichoxetduyet"><i class="fa fa-edit"></i>Đề tài chờ xét duyệt</a> 
-                    
-                  </li>
-
+                  <li><a href="hoidong.php?controller=detaichoxetduyet"><i class="fa fa-edit"></i>Đề tài chờ xét duyệt</a> </li>
 
                    <li><a href="hoidong.php?controller=phieuchamdetai"><i class="fa fa-desktop"></i> Phiếu chấm đề tài </a>
                   </li>
+
+                   <li><a href="hoidong.php?controller=lichbaove"><i class="fa fa-edit"></i>Xem lịch bảo vệ</a> </li>
+
+                   <li><a href="hoidong.php?controller=hoidong"><i class="fa fa-edit"></i>Xem hội đồng</a> </li>
                   
                 
                 </ul>

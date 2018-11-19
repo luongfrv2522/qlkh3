@@ -23,10 +23,11 @@
 				
 					$c_tenhoidong = $_POST["c_tenhoidong"];
 					$fk_madetai_id = $_POST["fk_madetai_id"];
-					
-					
+					$c_ngaybaove = $_POST["c_ngaybaove"];
+					$c_thoigian = $_POST["c_thoigian"];
+					$c_diadiem = $_POST["c_diadiem"];
 					//update ban ghi
-					$this->model->execute("update tbl_hoidong set c_tenhoidong='$c_tenhoidong',fk_madetai_id='$fk_madetai_id' where pk_hoidong_id=$id");
+					$this->model->execute("update tbl_hoidong set c_tenhoidong='$c_tenhoidong',fk_madetai_id='$fk_madetai_id', c_ngaybaove='$c_ngaybaove', c_thoigian='$c_thoigian', c_diadiem='$c_diadiem' where pk_hoidong_id=$id");
 					//di chuyen den trang 
 					header("location:admin.php?controller=hoidong");
 				break;
@@ -41,8 +42,11 @@
 					
 					$c_tenhoidong = $_POST["c_tenhoidong"];
 					$fk_madetai_id = $_POST["fk_madetai_id"];
+					$c_ngaybaove = $_POST["c_ngaybaove"];
+					$c_thoigian = $_POST["c_thoigian"];
+					$c_diadiem = $_POST["c_diadiem"];
 					
-					$this->model->execute("insert into tbl_hoidong set c_tenhoidong='$c_tenhoidong', fk_madetai_id='$fk_madetai_id'");
+					$this->model->execute("insert into tbl_hoidong set c_tenhoidong='$c_tenhoidong', fk_madetai_id='$fk_madetai_id', c_ngaybaove='$c_ngaybaove', c_thoigian='$c_thoigian', c_diadiem='$c_diadiem'");
 					//di chuyen den trang 
 					header("location:admin.php?controller=hoidong");
 				break;
