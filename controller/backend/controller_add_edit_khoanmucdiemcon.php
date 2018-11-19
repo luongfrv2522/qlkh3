@@ -19,13 +19,11 @@
 				case "do_edit":
 					$c_tenkhoanmuc = $_POST["c_tenkhoanmuc"];
 					$c_diemtoida = $_POST["c_diemtoida"];
-					$c_diemdanhgia = $_POST["c_diemdanhgia"];
-					
-				
+
 				
 					//-----
 					//update ban ghi
-					$this->model->execute("update tbl_phieucham set c_tenkhoanmuc='$c_tenkhoanmuc', c_diemtoida=$c_diemtoida, c_diemdanhgia=$c_diemdanhgia where pk_khoanmucdiem_id=$id");
+					$this->model->execute("update tbl_phieucham set c_tenkhoanmuc='$c_tenkhoanmuc', c_diemtoida=$c_diemtoida where pk_khoanmucdiem_id=$id");
 					//di chuyen den trang 
 					header("location:admin.php?controller=khoanmucdiem");
 				break;
@@ -41,8 +39,8 @@
 					$id_parent = $_POST["id_parent"];
 					$c_tenkhoanmuc = $_POST["c_tenkhoanmuc"];
 					$c_diemtoida = $_POST["c_diemtoida"];
-					$c_diemdanhgia = $_POST["c_diemdanhgia"];
-					$this->model->execute("insert into tbl_phieucham set parentId={$id_parent} , c_tenkhoanmuc='$c_tenkhoanmuc', c_diemtoida=$c_diemtoida, c_diemdanhgia=$c_diemdanhgia");
+					
+					$this->model->execute("insert into tbl_phieucham set parentId={$id_parent}, c_tenkhoanmuc='$c_tenkhoanmuc', c_diemtoida=$c_diemtoida");
 					//di chuyen den trang 
 					header("location:admin.php?controller=khoanmucdiem");
 				break;

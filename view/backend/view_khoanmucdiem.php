@@ -52,11 +52,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $tongdiem=0;$tongdanhgia=0; $index=0;?>
+                  <?php $tongdiem=0; $index=0;?>
                 <?php foreach($arr as $rows): ?>
                   <?php 
                       if($rows->c_diemtoida>0) $tongdiem+=$rows->c_diemtoida;
-                      if($rows->c_diemdanhgia>0) $tongdanhgia+=$rows->c_diemdanhgia;
+                      
                    ?>
                   <tr class="even pointer">
                     <td class="a-center ">
@@ -65,7 +65,7 @@
                    
                     <td class=" "><?=++$index?></td>
                     <td class=" " style="font-weight: bold;"><?php echo $rows->c_tenkhoanmuc; ?></td>
-                    <td class=" " style="font-weight: bold;"></td>
+                    <td class=" " style="font-weight: bold;"><?php echo $rows->c_diemtoida; ?></td>
                     <td class=" " style="font-weight: bold;"></td>
                     <td class=" last">
                       <a href="admin.php?controller=add_edit_khoanmucdiemcon&act=add&id=<?php echo $rows->pk_khoanmucdiem_id; ?>">Add</a>&nbsp;&nbsp;
@@ -82,7 +82,7 @@
                
                     <td class=" "></td>
                     <td class=" "><?php echo $rows1->c_tenkhoanmuc; ?></td>
-                    <td class=" "></td>
+                    <td class=" "><?php echo $rows1->c_diemtoida; ?></td>
                     <td class=" "></td>
                     <td class=" last">
                       <a href="admin.php?controller=add_edit_khoanmucdiem&act=edit&id=<?php echo $rows1->pk_khoanmucdiem_id; ?>"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -98,12 +98,10 @@
               <div class="form-group">
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" style="margin-left: 105px;">Tổng 
                         </label>
-                        <div class="col-md-1 col-sm-1 col-xs-12" style="margin-left: 400px;">
-                          <input type="" name="" class="form-control col-md-4 col-xs-12" readonly="" >  
+                        <div class="col-md-1 col-sm-1 col-xs-12" style="margin-left: 440px;">
+                          <input type="" name=" " value="<?php echo $tongdiem; ?>" class="form-control col-md-4 col-xs-12" readonly="" >  
                         </div>
-                        <div class="col-md-1 col-sm-1 col-xs-12" style="margin-left: 30px;">
-                          <input  type="" name="" class="form-control col-md-4 col-xs-12" readonly="">  
-                        </div>
+                        
                       </div>
             
              

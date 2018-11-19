@@ -42,7 +42,7 @@
                  
                     <th class="column-title">Nội dung đánh giá </th>
                     <th class="column-title">Điểm tối đa </th>
-                    <th class="column-title">Điểm đánh giá </th>
+                  
                
                     <th class="column-title no-link last" ><span class="nobr">Action</span>
                     </th>
@@ -58,7 +58,7 @@
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
                     <td class=" " style="font-weight: bold;"><?php echo $rows->c_tenkhoanmuc; ?></td>
-                    <td class=" " style="font-weight: bold;"></td>
+                    <td class=" " style="font-weight: bold;"><?php echo $rows->c_diemtoida; ?></td>
                     <td class=" " style="font-weight: bold;"></td>
                     <td class=" last">
                   
