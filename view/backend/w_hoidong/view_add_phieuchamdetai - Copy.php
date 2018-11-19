@@ -1,8 +1,4 @@
-  <?php 
-    if(isset($_GET['action']) && $_GET['action']=='test'){
-      print_r($_POST);
-    }
-  ?>
+  
  <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -89,7 +85,7 @@
                                     </tr>
                                   </thead>
                                     <tbody>
-                                       <tr class="even pointer">
+                                       <tr class="even pointer linePoint">
                                           <td class=" ">2</td>
                                           <td class=" ">3</td>      
                                         </tr>
@@ -104,8 +100,8 @@
                           </div>
                       </div>
               </form>
-          <div> 
-      </div>
+          <div>	
+			</div>
             <div class="clearfix"></div>
           </div>
 
@@ -173,19 +169,18 @@
               </table>
  
             </div>
-             <!-- <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>"> -->
-              <div class="form-horizontal form-label-left">
+             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<?php echo $form_action; ?>">
                  <div class="form-group">
                      <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ý kiến 
                     </label>
                     <div class="col-md-5 col-sm-5 col-xs-12">
-                      <input type="text" name="y_kien" value="<?php echo isset($record->y_kien)?$record->y_kien:""; ?>" required class="form-control col-md-7 col-xs-12" id="yKien"> 
+                      <input type="text" name="y_kien" value="<?php echo isset($record->y_kien)?$record->y_kien:""; ?>"  class="form-control col-md-7 col-xs-12" id="yKien"> 
                     </div>
                    
                     <label class="control-label col-md-1 col-sm-1 col-xs-12" >Ghi chú 
                     </label>
                     <div class="col-md-5 col-sm-5 col-xs-12">
-                      <input type="text" name="ghi_chu" value="<?php echo isset($record->ghi_chu)?$record->ghi_chu:""; ?>" required class="form-control col-md-7 col-xs-12" id="ghiChu"> 
+                      <input type="text" name="ghi_chu" value="<?php echo isset($record->ghi_chu)?$record->ghi_chu:""; ?>"  class="form-control col-md-7 col-xs-12" id="ghiChu"> 
                     </div>
                   </div>
 
@@ -197,15 +192,26 @@
                       </div>
                   </div>
 
+                  <div class="form-group">
+
+                      <div class="col-md-5 col-sm-5 col-xs-12" style="margin-left: 90px; margin-top: 10px; font-weight: bold;">
+                        Hoàn thành đề tài đúng thời hạn:
+                        <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required style=""> Hoàn thành đề tài quá hạn:
+                        <input type="radio" class="flat" name="gender" id="genderF" value="F" >
+                      </div>
+                  </div>
+
+
+
                    <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button class="btn btn-primary" type="button"><a href="hoidong.php?controller=phieuchamdetai" style="color: white;">Cancel</a></button>
                           <button class="btn btn-primary" type="reset" value="Reset">Reset</button>
-                          <button onclick="submitForm(this);" type="" value="Process" class="btn btn-success">Submit</button>
+                          <button onclick="submitForm();" type="submit" value="Process" class="btn btn-success">Submit</button>
                         </div>
                       </div>
-            </div>
+            </form>
 
 
 
@@ -224,34 +230,8 @@
 </div>
 <!-- /page content -->
 <script type="text/javascript">
-  /*`$(function(){
-    $('#demo-form2').submit(function(e){
-      e.preventDefault();
-      debugger
-       var listPoint = [];
-      $('.linePoint').each(function(){
-        let diem_chu_tich = $(this).find('.diem_chu_tich').val();
-        let diem_phan_bien_1 = $(this).find('.diem_phan_bien_1').val();
-        let diem_phan_bien_2 = $(this).find('.diem_phan_bien_2').val();
-        let pk_khoanmucdiem_id = $(this).find('.pk_khoanmucdiem_id').val();
-        var item = {
-          pk_khoanmucdiem_id: pk_khoanmucdiem_id?pk_khoanmucdiem_id:0,
-          diem_chu_tich : diem_chu_tich?diem_chu_tich:0,
-          diem_phan_bien_1 : diem_phan_bien_1?diem_phan_bien_1:0,
-          diem_phan_bien_2 : diem_phan_bien_2?diem_phan_bien_2:0
-        };
-        listPoint.push(item);
-      });
-      var objReturn = {
-        ghiChu : $('#ghiChu').val(),
-        yKien : $('#yKien').val(),
-        listPoint : listPoint
-      }
-      console.log(objReturn);
-    });
-  });*/
-  function submitForm(){
-    debugger
+  fk_user_idnction submitForm() {
+
     var listPoint = [];
     $('.linePoint').each(function(){
       let diem_chu_tich = $(this).find('.diem_chu_tich').val();
@@ -272,16 +252,6 @@
       listPoint : listPoint
     }
     console.log(objReturn);
-    $.ajax({
-        url: "controller/backend/w_hoidong/controller_add_diem_phieucham.php",
-        type: "post",
-        contentType : 'application/json; charset=utf-8',
-        dataType: "json",
-        data: JSON.stringify(objReturn),
-        success: function(data){
-          debugger
-          console.log(data);
-        }
-    });
   }
+  
 </script>

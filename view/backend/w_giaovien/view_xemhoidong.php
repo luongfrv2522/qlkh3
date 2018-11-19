@@ -35,29 +35,25 @@
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
                   <tr class="headings">
-                    <th>
-                      <input type="checkbox" id="check-all" class="flat">
-                    </th>
-                   
+                  
+                    <th class="column-title">STT </th>
                     <th class="column-title">Tên hội đồng </th>
                     <th class="column-title">Đề tài </th>
                     <th class="column-title">Bộ môn </th>
                     <th class="column-title">Thành viên hội đồng </th>
+                    <th class="column-title">Ngày </br>bảo vệ </th>
+                    <th class="column-title">Thời gian </br>bảo vệ </th>
+                    <th class="column-title">Địa điểm </br>bảo vệ </th>
+
                     
-                    
-                    
-                    <th class="bulk-actions" colspan="7">
-                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
+                   <?php $index=0;?>
                 <?php foreach($arr as $rows): ?>
                   <tr  class="even pointer">
-                    <td class="a-center ">
-                      <input type="checkbox" class="flat" name="table_records">
-                    </td>
                    
+                   <td class=" "><?=++$index?></td>
                     <td class=" "><?php echo $rows->c_tenhoidong; ?></td>
                      <td class=" ">
                       <?php 
@@ -72,6 +68,15 @@
                       <button type="button" class="btn btn-success btn-xs">
                       <a href="giaovien.php?controller=thongtinhoidong&IdHoiDong=<?=$rows->pk_hoidong_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>" style="color: white;">Thành viên hội đồng</a>
                     </td>
+
+                    <td class=" ">
+                      <?php 
+                         $date = date_create($rows->c_ngaybaove);
+                         echo date_format($date,"d/m/Y");     
+                      ?>  
+                    </td>
+                    <td class=" "><?php echo $rows->c_thoigian; ?></td>
+                    <td class=" "><?php echo $rows->c_diadiem; ?></td>
                   </button>
  
                   </tr>

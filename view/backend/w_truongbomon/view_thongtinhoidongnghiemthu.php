@@ -4,7 +4,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Hội đồng nghiệm thu</h3>
+        <h3>Thành viên hội đồng: <?=$_SESSION["TEN_HOIDONG"]?></h3>
       </div>
 
       <div class="title_right">
@@ -35,47 +35,39 @@
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
                   <tr class="headings">
+                    <th>
+                      <input type="checkbox" id="check-all" class="flat">
+                    </th>
+                    <th class="column-title">ID giám khảo </th>
+                    <th class="column-title">Giám khảo </th>
+                    <th class="column-title">Vai trò </th>
                     
-                    <th class="column-title">STT </th>
-                    <th class="column-title">Tên hội đồng </th>
-                    <th class="column-title">Đề tài </th>
-                    <th class="column-title">Bộ môn </th>
-                    <th class="column-title">Thành viên hội đồng </th>
-                    <th class="column-title">Ngày </br>bảo vệ </th>
-                    <th class="column-title">Thời gian </br>bảo vệ </th>
-                    <th class="column-title">Địa điểm </br>bảo vệ </th>
+                    <th class="bulk-actions" colspan="7">
+                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $index=0;?>
                 <?php foreach($arr as $rows): ?>
-                  <tr  class="even pointer">
-                    
-                    <td class=" "><?=++$index?></td>
-                    <td class=" "><?php echo $rows->c_tenhoidong; ?></td>
-                     <td class=" ">
+                  <tr class="even pointer">
+                    <td class="a-center ">
+                      <input type="checkbox" class="flat" name="table_records">
+                    </td>
+                    <td class=" "><?php echo $rows->pk_hoidongnghiemthu_id; ?></td>
+                    <td class=" ">
                       <?php 
-                        $detai = $this->model->get_a_record("select c_tendetai from tbl_detai where pk_madetai_id={$rows->fk_madetai_id}");
-                        echo isset($detai->c_tendetai)?$detai->c_tendetai:"";
+                        $giamkhao = $this->model->get_a_record("select c_fullname from tbl_user where pk_user_id={$rows->fk_user_id}");
+                        echo isset($giamkhao->c_fullname)?$giamkhao->c_fullname:"";
+                      ?>
+                    </td> 
+                    <td class=" ">
+                      <?php 
+                        $vaitro = $this->model->get_a_record("select c_vaitro from tbl_vaitro where pk_vaitro_id={$rows->fk_vaitro_id}");
+                        echo isset($vaitro->c_vaitro)?$vaitro->c_vaitro:"";
                       ?>
                     </td>
-                    <?php $bomon = $this->model->get_a_record("select * from tbl_detai dt join tbl_user u on u.pk_user_id = dt.fk_user_id join tbl_bomon bm on bm.pk_mabomon_id=u.fk_mabomon_id where dt.pk_madetai_id =".$rows->fk_madetai_id); ?>
-                    <td class=""><?=$bomon->c_tenbomon?></td>
-
-                    <td class=" ">
-                      <button type="button" class="btn btn-success btn-xs">
-                      <a href="giaovien.php?controller=thongtinhoidongnghiemthu&IdHoiDong=<?=$rows->pk_hoidongnghiemthu_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>"style="color: white;">Thành viên hội đồng</a>
-                    </td>
-                     <td class=" ">
-                      <?php 
-                         $date = date_create($rows->c_ngaybaove);
-                         echo date_format($date,"d/m/Y");     
-                      ?>  
-                    </td>
-                    <td class=" "><?php echo $rows->c_thoigian; ?></td>
-                    <td class=" "><?php echo $rows->c_diadiem; ?></td>
-                  </button>
- 
+                 
+                   
                   </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -106,7 +98,10 @@
 				
 			</div>
            
-        
+        <div class="col-md-offset">
+          <button class="btn btn-primary" type="button"><a href="giaovien.php?controller=xemhoidongnghiemthu" style="color: white;">Cancel</a></button>
+          
+        </div>
       </div>
 			
             </div>

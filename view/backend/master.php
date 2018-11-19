@@ -69,20 +69,18 @@
                       <li><a href="admin.php?controller=news">Quản lý tin tức</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Quản lý hội đồng và thời gian<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-desktop"></i> Quản lý hội đồng - thời gian<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="admin.php?controller=hoidong">Duyệt đề tài</a></li>
                       <li><a href="admin.php?controller=hoidongnghiemthu">Nghiệm thu đề tài</a></li>
                     </ul>
                   </li>
 
-                 
                   <li><a href="admin.php?controller=khoanmucdiem"><i class="fa fa-table"></i> Phiếu chấm nghiệm thu </a></li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Thống kê<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Chart JS</a></li>
-                      <li><a href="#">Chart JS2</a></li>
-                      <li><a href="#">Moris JS</a></li>
+                      <li><a href="admin.php?controller=dungthoihan">Đề tài hoàn thành đúng thời hạn</a></li>
+                      <li><a href="admin.php?controller=quathoihan">Đề tài hoàn thành quá thời hạn</a></li>
                     </ul>
                   </li>
                 

@@ -64,7 +64,7 @@
 
                     <td class=" ">
                       <button type="button" class="btn btn-success btn-xs">
-                      <a href="giaovien.php?controller=thongtinhoidongnghiemthu&IdHoiDong=<?=$rows->pk_hoidongnghiemthu_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>"style="color: white;">Thành viên hội đồng</a>
+                      <a href="truongbomon.php?controller=thongtinhoidongnghiemthu&IdHoiDong=<?=$rows->pk_hoidongnghiemthu_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>"style="color: white;">Thành viên hội đồng</a>
                     </td>
                      <td class=" ">
                       <?php 

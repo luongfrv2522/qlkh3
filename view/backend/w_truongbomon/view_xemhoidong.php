@@ -4,7 +4,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Hội đồng nghiệm thu</h3>
+        <h3>Hội đồng duyệt đề tài</h3>
       </div>
 
       <div class="title_right">
@@ -35,7 +35,7 @@
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
                   <tr class="headings">
-                    
+                  
                     <th class="column-title">STT </th>
                     <th class="column-title">Tên hội đồng </th>
                     <th class="column-title">Đề tài </th>
@@ -44,14 +44,16 @@
                     <th class="column-title">Ngày </br>bảo vệ </th>
                     <th class="column-title">Thời gian </br>bảo vệ </th>
                     <th class="column-title">Địa điểm </br>bảo vệ </th>
+
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $index=0;?>
+                   <?php $index=0;?>
                 <?php foreach($arr as $rows): ?>
                   <tr  class="even pointer">
-                    
-                    <td class=" "><?=++$index?></td>
+                   
+                   <td class=" "><?=++$index?></td>
                     <td class=" "><?php echo $rows->c_tenhoidong; ?></td>
                      <td class=" ">
                       <?php 
@@ -59,14 +61,15 @@
                         echo isset($detai->c_tendetai)?$detai->c_tendetai:"";
                       ?>
                     </td>
-                    <?php $bomon = $this->model->get_a_record("select * from tbl_detai dt join tbl_user u on u.pk_user_id = dt.fk_user_id join tbl_bomon bm on bm.pk_mabomon_id=u.fk_mabomon_id where dt.pk_madetai_id =".$rows->fk_madetai_id); ?>
+                     <?php $bomon = $this->model->get_a_record("select * from tbl_detai dt join tbl_user u on u.pk_user_id = dt.fk_user_id join tbl_bomon bm on bm.pk_mabomon_id=u.fk_mabomon_id where dt.pk_madetai_id =".$rows->fk_madetai_id); ?>
                     <td class=""><?=$bomon->c_tenbomon?></td>
 
                     <td class=" ">
                       <button type="button" class="btn btn-success btn-xs">
-                      <a href="giaovien.php?controller=thongtinhoidongnghiemthu&IdHoiDong=<?=$rows->pk_hoidongnghiemthu_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>"style="color: white;">Thành viên hội đồng</a>
+                      <a href="truongbomon.php?controller=thongtinhoidong&IdHoiDong=<?=$rows->pk_hoidong_id?>&TenHoiDong=<?=$rows->c_tenhoidong?>&IdDeTai=<?=$rows->fk_madetai_id?>" style="color: white;">Thành viên hội đồng</a>
                     </td>
-                     <td class=" ">
+
+                    <td class=" ">
                       <?php 
                          $date = date_create($rows->c_ngaybaove);
                          echo date_format($date,"d/m/Y");     

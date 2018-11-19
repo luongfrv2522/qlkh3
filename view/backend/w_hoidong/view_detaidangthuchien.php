@@ -34,8 +34,6 @@
                     <th class="column-title">Tên đề tài </th>
                     <th class="column-title">Bộ môn </th>
                     <th class="column-title">Chủ nhiệm đề tài </th>
-                   
-                    <th class="column-title">Kinh phí </th>
                     <th class="column-title">Từ ngày </th>
                     <th class="column-title">Đến ngày </th>
                     <th class="column-title">File mô tả </th>
@@ -55,7 +53,10 @@
                     </td>
                     <td class=" "><?php echo $rows->c_tendetai; ?></td>
                     <td class=" ">
-                      <?=$rows->c_tenbomon?>
+                      <?php 
+                        $bomon = $this->model->get_a_record("select c_tenbomon from tbl_bomon where pk_mabomon_id={$rows->fk_mabomon_id}");
+                        echo isset($bomon->c_tenbomon)?$bomon->c_tenbomon:"";
+                      ?>
                     </td>
                     <td class=" ">
 
@@ -63,7 +64,7 @@
 
                     </td>
                     
-                    <td class=" "><?php echo $rows->c_kinhphi; ?></td>
+                
                     <td class=" ">
                     	<?php 
 							           $date = date_create($rows->c_tungay);

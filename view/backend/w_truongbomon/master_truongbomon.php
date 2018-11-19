@@ -60,10 +60,10 @@
                       <li><a href="truongbomon.php?controller=detaibihuy">Đề tài bị hủy</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Hội đồng và thời gian bảo vệ <span class="fa fa-chevron-down"></span></a>
+                 <li><a><i class="fa fa-desktop"></i> Hội đồng - thời gian <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="truongbomon.php?controller=hoidong">Duyệt đề tài</a></li>
-                      <li><a href="truongbomon.php?controller=hoidongnghiemthu">Nghiệm thu đề tài</a></li>
+                      <li><a href="truongbomon.php?controller=xemhoidong">Duyệt đề tài</a></li>
+                      <li><a href="truongbomon.php?controller=xemhoidongnghiemthu">Nghiệm thu đề tài</a></li>
                     </ul>
                   </li>
                    <li><a href="truongbomon.php?controller=baocaotiendo"><i class="fa fa-table"></i> Xem tiến độ đề tài </a></li>
